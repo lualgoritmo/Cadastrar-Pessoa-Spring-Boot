@@ -3,6 +3,7 @@ package com.luciano.cadastropessoa.cadastrarpessoa.service
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.PersonNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Person
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.PersonRepository
+import com.luciano.cadastropessoa.cadastrarpessoa.util.validatePerson
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
@@ -10,7 +11,10 @@ import org.springframework.stereotype.Service
 class PersonService(private val personRepository: PersonRepository) {
 
     @Transactional
-    fun createPerson(person: Person): Person = personRepository.save(person)
+    fun createPerson(person: Person): Person {
+        validatePerson(person)
+        return personRepository.save(person)
+    }
 
     @Transactional
     fun getAllPerson(): List<Person> = personRepository.findAll()
@@ -30,6 +34,7 @@ class PersonService(private val personRepository: PersonRepository) {
             email = updatePerson.email,
             description = updatePerson.description
         )
+        validatePerson(updatedPerson)
         return personRepository.save(updatedPerson)
     }
 

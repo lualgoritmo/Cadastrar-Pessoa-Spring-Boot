@@ -10,7 +10,14 @@ fun convertPersonDTOTOPerson(personDTO: PersonDTO): Person {
     ) { "Campo vazio!" }
     return Person(0, personDTO.name, personDTO.email, personDTO.description)
 }
-
+fun validatePerson(person: Person):Person {
+   person.let {
+        if (it.name == "" || it.email == "" || it.description == "") {
+            println("Preencha o campo: $it")
+        }
+    }
+    return person
+}
 fun convertPersonTOPersonDTO(person: Person): PersonDTO {
     if (person.name == "" || person.email == "" || person.description == "") {
         println("O DTO não existe")
