@@ -1,6 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller
 
-import com.luciano.cadastrarpessoa.demo.controller.dto.PersonDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.PersonDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.PersonNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.service.PersonService
 import com.luciano.cadastropessoa.cadastrarpessoa.util.convertPersonDTOTOPerson
@@ -8,7 +8,6 @@ import com.luciano.cadastropessoa.cadastrarpessoa.util.convertPersonTOPersonDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Person
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
-import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 @RestController

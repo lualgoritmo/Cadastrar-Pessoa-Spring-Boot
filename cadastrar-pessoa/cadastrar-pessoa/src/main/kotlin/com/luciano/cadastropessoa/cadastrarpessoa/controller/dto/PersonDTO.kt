@@ -1,4 +1,4 @@
-package com.luciano.cadastrarpessoa.demo.controller.dto
+package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
 data class PersonDTO(
     val name: String,

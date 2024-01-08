@@ -1,6 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.util
 
-import com.luciano.cadastrarpessoa.demo.controller.dto.PersonDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.PersonDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Person
 
 fun convertPersonDTOTOPerson(personDTO: PersonDTO): Person {
