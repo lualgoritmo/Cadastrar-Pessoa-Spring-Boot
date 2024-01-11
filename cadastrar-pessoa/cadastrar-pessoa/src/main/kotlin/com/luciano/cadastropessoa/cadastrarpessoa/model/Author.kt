@@ -17,11 +17,11 @@ data class Author(
     @field:NotNull("O nome não pode ser nulo")
     val name: String,
     @Column(unique = true)
-    @field:UniqueValue(
-        message = "Este Email já está sendo usado!",
-        fieldName = "email",
-        domainClass = Author::class
-    )
+//    @field:UniqueValue(
+//        message = "Este Email já está sendo usado!",
+//        fieldName = "email",
+//        domainClass = Author::class
+//    )
     @field:NotBlank(message = "O e-mail não pode estar em branco")
     @field:Size(max = 200, message = "O nome da categoria não pode estar em branco")
     @field:Email(message = "O e-mail deve ser válido")

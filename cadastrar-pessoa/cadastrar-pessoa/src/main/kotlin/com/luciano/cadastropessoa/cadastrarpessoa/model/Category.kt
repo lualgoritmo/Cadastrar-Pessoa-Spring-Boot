@@ -10,8 +10,8 @@ data class Category(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val idCategory: Long?,
-    @field:UniqueValue(message = "Este nome de categoria já está sendo usado!", fieldName = "name",
-        domainClass = Category::class)
+//    @field:UniqueValue(message = "Este nome de categoria já está sendo usado!", fieldName = "name",
+//        domainClass = Category::class)
     @field:NotBlank(message = "O nome não pode estar em branco")
     @Column(unique = true)
     val name: String) {

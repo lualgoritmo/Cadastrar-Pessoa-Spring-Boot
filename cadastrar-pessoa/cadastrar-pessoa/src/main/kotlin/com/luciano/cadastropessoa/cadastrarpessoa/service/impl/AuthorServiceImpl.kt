@@ -12,11 +12,10 @@ import org.springframework.stereotype.Service
 class AuthorServiceImpl(
     private val authorRepository: AuthorRepository
 ) : AuthorService {
-
     @Transactional
     override fun createAuthor(author: Author): Author = authorRepository.save(author)
-    @Transactional
     override fun getAllAuthor(): List<Author> = authorRepository.findAll()
+
     @Transactional
     override fun getByIdAuthor(idAuthor: Long): Author = authorRepository.findById(idAuthor)
         .orElseThrow { AuthorNotFoundException(idAuthor) }
