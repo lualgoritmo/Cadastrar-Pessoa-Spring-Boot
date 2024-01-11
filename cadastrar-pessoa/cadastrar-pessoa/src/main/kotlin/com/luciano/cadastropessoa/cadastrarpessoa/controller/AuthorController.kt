@@ -16,8 +16,8 @@ class AuthorController(private val authorService: AuthorService) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createAuthor(@RequestBody @Valid createAuthorDTO: CreateAuthorDTO): CreateAuthorDTO {
-        val person: Author = authorService.createAuthor(createAuthorDTO.toEntity())
-        return CreateAuthorDTO.fromEntity(person)
+        val author: Author = authorService.createAuthor(createAuthorDTO.toEntity())
+        return CreateAuthorDTO.fromEntity(author)
     }
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
@@ -46,11 +46,10 @@ class AuthorController(private val authorService: AuthorService) {
     @PutMapping("/{idAuthor}/updates")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public fun updateAuthorWitchId(@PathVariable idAuthor: Long, @RequestBody @Valid updateAuthorDTO: UpdateAuthorDTO
-    ): UpdateAuthorDTO {
+    ): UpdateAuthorDTO? {
         val updateAuthor = authorService.updateAuthorWithId(idAuthor, updateAuthorDTO.toEntity())
         return UpdateAuthorDTO.fromEntity(updateAuthor)
     }
-
     @DeleteMapping("/{idAuthor}/deleteAuthor")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun getByIdToDeleteAuthor(@PathVariable idAuthor: Long) = authorService.deleteByIdAuthor(idAuthor)
