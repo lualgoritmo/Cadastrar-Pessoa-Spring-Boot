@@ -1,6 +1,7 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateCategoryDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.UpdateCategoryDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.CategoryNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
 import com.luciano.cadastropessoa.cadastrarpessoa.service.CategoryService
@@ -29,6 +30,17 @@ class CategoryController(private val categoryService: CategoryService) {
         }
 
         return listCategorys.map { CreateCategoryDTO.fromEntity(it) }.toList()
+    }
+
+    @PutMapping("/{idCategory}")
+    @ResponseStatus(HttpStatus.OK)
+    fun updateCategoryWithId(
+        @PathVariable idCategory: Long,
+        @RequestBody @Valid
+        updateCategoryDTO: UpdateCategoryDTO
+    ): UpdateCategoryDTO {
+        val category: Category = categoryService.updateCategoryWithId(idCategory, updateCategoryDTO.toEntity())
+        return UpdateCategoryDTO.fromEntity(category)
     }
 
     @GetMapping("/{idCategory}")

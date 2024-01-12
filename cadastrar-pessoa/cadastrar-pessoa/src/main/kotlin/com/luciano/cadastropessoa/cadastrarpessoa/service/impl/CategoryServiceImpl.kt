@@ -1,6 +1,5 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.service.impl
 
-import com.luciano.cadastropessoa.cadastrarpessoa.exception.AuthorNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.CategoryNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.CategoryRepository
@@ -9,7 +8,9 @@ import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
 @Service
-class CategoryServiceImpl(private val categoryRepository: CategoryRepository) : CategoryService {
+class CategoryServiceImpl(
+    private val categoryRepository: CategoryRepository
+) : CategoryService {
     @Transactional
     override fun createCategory(category: Category): Category = categoryRepository.save(category)
     @Transactional
@@ -18,7 +19,14 @@ class CategoryServiceImpl(private val categoryRepository: CategoryRepository) : 
     override fun getByIdCategory(idCategory: Long): Category = categoryRepository.findById(idCategory).orElseThrow {
         throw CategoryNotFoundException(idCategory)
     }
-
+    @Transactional
+    override fun updateCategoryWithId(idCategory: Long, category: Category): Category {
+        val existingCategory: Category = categoryRepository.findById(idCategory).orElseThrow {
+            throw CategoryNotFoundException(idCategory)
+        }
+        val updateCategory = existingCategory.copy(name = category.name)
+        return categoryRepository.save(updateCategory)
+    }
     @Transactional
     override fun deleteByIdCategory(idCategory: Long) {
         try {

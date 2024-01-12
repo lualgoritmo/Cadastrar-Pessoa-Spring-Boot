@@ -1,4 +1,6 @@
-import com.luciano.cadastropessoa.cadastrarpessoa.exception.UniqueValueValidator
+package com.luciano.cadastropessoa.cadastrarpessoa.util
+
+import com.luciano.cadastropessoa.cadastrarpessoa.util.UniqueValueValidator
 import jakarta.validation.Constraint
 import jakarta.validation.Payload
 import kotlin.reflect.KClass

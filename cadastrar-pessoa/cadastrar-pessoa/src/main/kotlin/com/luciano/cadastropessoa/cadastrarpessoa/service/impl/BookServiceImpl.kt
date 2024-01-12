@@ -1,32 +1,68 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.service.impl
 
-import com.luciano.cadastropessoa.cadastrarpessoa.exception.AuthorNotFoundException
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateBookDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.exception.BookNotFoundException
+import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.BookRepository
+import com.luciano.cadastropessoa.cadastrarpessoa.service.AuthorService
 import com.luciano.cadastropessoa.cadastrarpessoa.service.BookService
+import jakarta.transaction.Transactional
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.stereotype.Service
 
 @Service
-class BookServiceImpl(private val bookRepository: BookRepository) : BookService {
-    override fun createBook(book: Book) = bookRepository.save(book)
+class BookServiceImpl(
+    private val bookRepository: BookRepository,
+    private val authorService: AuthorService
+) : BookService {
+    @Transactional
+    override fun createBook(bookDTO: CreateBookDTO): Book {
+        try {
+            val author: Author = authorService.getByIdAuthor(bookDTO.authorId)
+            return bookRepository.save(bookDTO.toEntity(author))
+        } catch (ex: EmptyResultDataAccessException) {
+            throw BookNotFoundException(bookDTO.authorId)
+        }
+
+    }
+
     override fun getAllBooks(): List<Book> = bookRepository.findAll()
 
+    @Transactional
     override fun getByIdBook(idBook: Long): Book {
-        return bookRepository.findById(idBook).orElseThrow {
-            AuthorNotFoundException(idBook)
+        try {
+            return bookRepository.findById(idBook).orElseThrow {
+                BookNotFoundException(idBook)
+            }
+        } catch (ex: Exception) {
+            throw ex
         }
     }
 
-    override fun updateWithBookId(idBook: Long, book: Book): Book {
-        TODO("Not yet implemented")
+    @Transactional
+    override fun updateWithBookId(idBook: Long, updateBook: Book): Book {
+        val existingBook: Book = bookRepository.findById(idBook).orElseThrow {
+            throw BookNotFoundException(idBook)
+        }
+
+        val updateBook = existingBook.copy(
+            title = updateBook.title,
+            isbnBook = updateBook.isbnBook,
+            summary = updateBook.summary,
+            resume = updateBook.resume,
+            price = updateBook.price,
+            datePost = updateBook.datePost,
+            authorId = updateBook.authorId
+        )
+        return bookRepository.save(updateBook)
     }
 
     override fun deleteByIdBook(idBook: Long) {
         try {
             return bookRepository.deleteById(idBook)
         } catch (ex: EmptyResultDataAccessException) {
-            throw AuthorNotFoundException(idBook)
+            throw BookNotFoundException(idBook)
         }
 
     }

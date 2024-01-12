@@ -1,6 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
-import UniqueValue
+import com.luciano.cadastropessoa.cadastrarpessoa.util.UniqueValue
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
 import jakarta.validation.constraints.NotBlank
@@ -15,7 +15,7 @@ data class CreateCategoryDTO(
     )
     val name: String
 ) {
-    fun toEntity() = Category(idCategory = null, name = this.name)
+    fun toEntity() = Category(idCategory = 0, name = this.name)
 
     companion object { fun fromEntity(category: Category) =
             CreateCategoryDTO(name = category.name)

@@ -19,6 +19,7 @@ class AuthorController(private val authorService: AuthorService) {
         val author: Author = authorService.createAuthor(createAuthorDTO.toEntity())
         return CreateAuthorDTO.fromEntity(author)
     }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     fun getAllAuthor(): List<CreateAuthorDTO> {
@@ -45,11 +46,13 @@ class AuthorController(private val authorService: AuthorService) {
 
     @PutMapping("/{idAuthor}/updates")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public fun updateAuthorWitchId(@PathVariable idAuthor: Long, @RequestBody @Valid updateAuthorDTO: UpdateAuthorDTO
-    ): UpdateAuthorDTO? {
+    public fun updateAuthorWitchId(
+        @PathVariable idAuthor: Long, @RequestBody @Valid updateAuthorDTO: UpdateAuthorDTO
+    ): UpdateAuthorDTO {
         val updateAuthor = authorService.updateAuthorWithId(idAuthor, updateAuthorDTO.toEntity())
         return UpdateAuthorDTO.fromEntity(updateAuthor)
     }
+
     @DeleteMapping("/{idAuthor}/deleteAuthor")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun getByIdToDeleteAuthor(@PathVariable idAuthor: Long) = authorService.deleteByIdAuthor(idAuthor)

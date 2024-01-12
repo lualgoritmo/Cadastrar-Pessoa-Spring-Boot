@@ -14,9 +14,10 @@ class UpdateAuthorDTO(
     @field:NotBlank(message = "A descrição não pode estar em branco")
     @field:Size(max = 255, message = "A descrição deve ter no máximo 255 caracteres")
     private val description: String,
-    private val book: Book? = null
+    private val book: List<Book> = emptyList()
 ) {
     fun toEntity() = Author(
+        idAuthor = 0,
         name = this.name,
         email = this.email,
         description = this.description,
@@ -24,13 +25,13 @@ class UpdateAuthorDTO(
     )
 
     companion object {
-        fun fromEntity(author: Author) = author.book?.let {
+        fun fromEntity(author: Author) =
             UpdateAuthorDTO(
                 name = author.name,
                 email = author.email,
                 description = author.description,
-                book = it
+                book = author.book
             )
         }
-    }
+
 }

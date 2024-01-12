@@ -1,8 +1,7 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
-import UniqueValue
+import com.luciano.cadastropessoa.cadastrarpessoa.util.UniqueValue
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
@@ -25,13 +24,12 @@ data class CreateAuthorDTO(
     @field:NotBlank(message = "A descrição não pode estar em branco")
     @field:Size(max = 255, message = "A descrição deve ter no máximo 255 caracteres")
     val description: String,
-    val book: Book? = null
 ) {
     fun toEntity() = Author(
+        idAuthor = 0,
         name = this.name,
         email = this.email,
-        description = this.description,
-        book = this.book
+        description = this.description
     )
 
     companion object {
@@ -39,7 +37,6 @@ data class CreateAuthorDTO(
             name = author.name,
             email = author.email,
             description = author.description,
-            book = null
         )
     }
 }

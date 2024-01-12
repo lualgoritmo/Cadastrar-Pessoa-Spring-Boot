@@ -1,6 +1,5 @@
-package com.luciano.cadastropessoa.cadastrarpessoa.exception
+package com.luciano.cadastropessoa.cadastrarpessoa.util
 
-import UniqueValue
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
 import jakarta.validation.ConstraintValidator
@@ -21,7 +20,7 @@ class UniqueValueValidator(
     }
     //@Transactional(value = Transactional.TxType.REQUIRED)
     override fun isValid(value: Any?, context: ConstraintValidatorContext): Boolean {
-        val query = manager.createQuery("select 1 from ${klass.qualifiedName} where upper($domainAttribute) = :value")
+        val query = manager.createQuery("select 1 from ${klass.qualifiedName} where $domainAttribute = :value")
         query.setParameter("value", value)
         val list = query.resultList
         return list.isEmpty()

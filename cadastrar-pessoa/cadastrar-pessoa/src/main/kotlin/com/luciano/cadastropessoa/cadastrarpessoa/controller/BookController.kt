@@ -1,8 +1,11 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateBookDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.UpdateBookDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.exception.BookNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
 import com.luciano.cadastropessoa.cadastrarpessoa.service.BookService
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
@@ -11,13 +14,14 @@ import org.springframework.web.bind.annotation.*
 class BookController(private val bookService: BookService) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createsBook(bookDTO: CreateBookDTO): CreateBookDTO {
-        val book: Book = bookService.createBook(bookDTO.toEntity())
+    fun createsBook(@RequestBody @Valid bookDTO: CreateBookDTO): CreateBookDTO? {
+        val book: Book = bookService.createBook(bookDTO)
         return CreateBookDTO.fromEntity(book)
     }
+
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    fun getAllBooks(): List<CreateBookDTO> {
+    fun getAllBooks(): List<CreateBookDTO?> {
         val books: List<Book> = bookService.getAllBooks()
         if (books.isEmpty()) {
             println("A lista está vazia!")
@@ -25,18 +29,25 @@ class BookController(private val bookService: BookService) {
         return books.map { CreateBookDTO.fromEntity(it) }.toList()
     }
 
-    @GetMapping("/idBook")
+    @GetMapping("/{idBook}")
     @ResponseStatus(HttpStatus.OK)
     fun getBookWithId(@PathVariable idBook: Long): CreateBookDTO {
         try {
             val book = bookService.getByIdBook(idBook)
             return CreateBookDTO.fromEntity(book)
-        } catch (e: Exception) {
-            println("Id não existente")
-            throw e
+        } catch (ex: BookNotFoundException) {
+            throw ex
         }
     }
-    @DeleteMapping("/idBooks/delete")
+
+    @PutMapping("/{idBook}/update")
+    @ResponseStatus(HttpStatus.OK)
+    fun updateBook(@PathVariable idBook: Long, @RequestBody @Valid updateBookDTO: UpdateBookDTO): UpdateBookDTO {
+        val updateBook = bookService.updateWithBookId(idBook, updateBookDTO.toEntity())
+        return UpdateBookDTO.fromEntity(updateBook)
+    }
+
+    @DeleteMapping("/{idBook}/delete")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteBookWithId(@PathVariable idBook: Long) = bookService.deleteByIdBook(idBook)
 

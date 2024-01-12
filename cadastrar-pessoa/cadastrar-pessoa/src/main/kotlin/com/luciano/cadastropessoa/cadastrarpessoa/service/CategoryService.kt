@@ -6,5 +6,6 @@ interface CategoryService {
     fun createCategory(category: Category): Category
     fun getAllCategorys(): List<Category>
     fun getByIdCategory(idCategory: Long): Category
+    fun updateCategoryWithId(idCategory: Long, category: Category): Category
     fun deleteByIdCategory(idCategory: Long)
 }
