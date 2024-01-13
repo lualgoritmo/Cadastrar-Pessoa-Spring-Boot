@@ -1,20 +1,20 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.model
 
-import com.luciano.cadastropessoa.cadastrarpessoa.util.UniqueValue
 import jakarta.persistence.*
 import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.NotNull
 
 @Entity
 @Table(name = "tb_category")
 data class Category(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val idCategory: Long,
-    @field:UniqueValue(
-        message = "Esta categoria ja existe!",
-        fieldName = "category",
-        domainClass = Category::class
-    )
+    val idCategory: Long,
+
+    @Column(unique = true)
+    @field:NotNull(message = "A categoria não pode ser null")
     @field:NotBlank(message = "O nome não pode estar em branco")
-    @Column(unique = true) val name: String
+    val name: String,
+    @OneToMany(mappedBy = "categoryId", cascade = [CascadeType.ALL])
+    val book: List<Book> = emptyList()
 )

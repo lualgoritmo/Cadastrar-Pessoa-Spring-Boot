@@ -2,6 +2,7 @@ package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
+import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
 import org.jetbrains.annotations.NotNull
@@ -29,11 +30,10 @@ data class CreateBookDTO(
     @field:NotNull("A data não pode ser nulo")
     val datePost: String,
 
-    var authorId: Long
+    val authorId: Long,
+    val categoryId: Long
 ) {
-    fun toEntity(author: Author): Book {
-
-        return Book(
+    fun toEntity(author: Author, category: Category) = Book(
             idBook = 0,
             title = this.title,
             isbnBook = this.isbnBook,
@@ -41,21 +41,21 @@ data class CreateBookDTO(
             summary = this.summary,
             price = this.price,
             datePost = this.datePost,
-            authorId = author
+            authorId = author,
+            categoryId = category
         )
-    }
-
 
     companion object {
         fun fromEntity(book: Book) = CreateBookDTO(
-                title = book.title,
-                isbnBook = book.isbnBook,
-                resume = book.resume,
-                summary = book.summary,
-                price = book.price,
-                datePost = book.datePost,
-                authorId = book.authorId.idAuthor
-            )
-        }
-
+            title = book.title,
+            isbnBook = book.isbnBook,
+            resume = book.resume,
+            summary = book.summary,
+            price = book.price,
+            datePost = book.datePost,
+            authorId = book.authorId.idAuthor,
+            categoryId = book.categoryId.idCategory
+        )
+    }
 }
+

@@ -2,9 +2,7 @@ package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
-import jakarta.persistence.CascadeType
-import jakarta.persistence.JoinColumn
-import jakarta.persistence.ManyToOne
+import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
 import org.jetbrains.annotations.NotNull
@@ -32,9 +30,8 @@ data class UpdateBookDTO(
     @field:NotNull("A data não pode ser nulo")
     val datePost: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
-    @JoinColumn(name = "author_id")
-    val authorId: Author
+    val authorId: Author,
+    val categoryId: Category
 ) {
     fun toEntity() = Book(
         0,
@@ -44,7 +41,8 @@ data class UpdateBookDTO(
         summary = this.summary,
         price = this.price,
         datePost = this.datePost,
-        authorId = this.authorId
+        authorId = this.authorId,
+        categoryId = this.categoryId
     )
 
     companion object {
@@ -55,7 +53,8 @@ data class UpdateBookDTO(
             summary = book.summary,
             price = book.price,
             datePost = book.datePost,
-            authorId = book.authorId
+            authorId = book.authorId,
+            categoryId = book.categoryId
         )
     }
 }

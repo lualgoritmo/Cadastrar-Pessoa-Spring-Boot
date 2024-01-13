@@ -1,17 +1,13 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
-import com.luciano.cadastropessoa.cadastrarpessoa.util.UniqueValue
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
-import jakarta.validation.constraints.NotBlank
+import com.luciano.cadastropessoa.cadastrarpessoa.util.UniqueValue
 
 data class CreateCategoryDTO(
-    @field:NotBlank(message = "O nome não pode estar em branco")
-
     @field:UniqueValue(
-        message = "Este Email já está sendo usado!",
+        message = "Essa Categoria  já existe!",
         fieldName = "name",
-        domainClass = Author::class
+        domainClass = Category::class
     )
     val name: String
 ) {

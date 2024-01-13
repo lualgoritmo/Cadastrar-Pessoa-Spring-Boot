@@ -36,5 +36,9 @@ data class Book(
 
     @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "author_id")
-    val authorId: Author
+    val authorId: Author,
+
+    @ManyToOne(cascade = [CascadeType.ALL])
+    @JoinColumn(name = "category_id")
+    val categoryId: Category
 )

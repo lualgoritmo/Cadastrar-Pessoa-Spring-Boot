@@ -4,9 +4,11 @@ import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateBookDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.BookNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
+import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.BookRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.AuthorService
 import com.luciano.cadastropessoa.cadastrarpessoa.service.BookService
+import com.luciano.cadastropessoa.cadastrarpessoa.service.CategoryService
 import jakarta.transaction.Transactional
 import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.stereotype.Service
@@ -14,13 +16,15 @@ import org.springframework.stereotype.Service
 @Service
 class BookServiceImpl(
     private val bookRepository: BookRepository,
-    private val authorService: AuthorService
+    private val authorService: AuthorService,
+    private val categoryService: CategoryService
 ) : BookService {
     @Transactional
     override fun createBook(bookDTO: CreateBookDTO): Book {
         try {
             val author: Author = authorService.getByIdAuthor(bookDTO.authorId)
-            return bookRepository.save(bookDTO.toEntity(author))
+            val category: Category = categoryService.getByIdCategory(bookDTO.categoryId)
+            return bookRepository.save(bookDTO.toEntity(author, category))
         } catch (ex: EmptyResultDataAccessException) {
             throw BookNotFoundException(bookDTO.authorId)
         }
