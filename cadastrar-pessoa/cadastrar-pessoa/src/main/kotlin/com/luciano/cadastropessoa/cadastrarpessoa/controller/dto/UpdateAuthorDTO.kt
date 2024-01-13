@@ -21,7 +21,7 @@ class UpdateAuthorDTO(
         name = this.name,
         email = this.email,
         description = this.description,
-        book = this.book
+        books = this.book
     )
 
     companion object {
@@ -30,7 +30,7 @@ class UpdateAuthorDTO(
                 name = author.name,
                 email = author.email,
                 description = author.description,
-                book = author.book
+                book = author.books
             )
         }
 

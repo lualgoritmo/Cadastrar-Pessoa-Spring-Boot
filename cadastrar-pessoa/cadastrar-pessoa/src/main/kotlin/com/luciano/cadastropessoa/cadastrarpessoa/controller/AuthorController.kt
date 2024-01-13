@@ -1,7 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller
 
-import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateAuthorDTO
-import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.UpdateAuthorDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.*
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.AuthorNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.service.AuthorService
@@ -11,7 +10,8 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/authors")
-class AuthorController(private val authorService: AuthorService) {
+class
+AuthorController(private val authorService: AuthorService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -56,5 +56,32 @@ class AuthorController(private val authorService: AuthorService) {
     @DeleteMapping("/{idAuthor}/deleteAuthor")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun getByIdToDeleteAuthor(@PathVariable idAuthor: Long) = authorService.deleteByIdAuthor(idAuthor)
+
+    @GetMapping("/inforcomplete")
+    @ResponseStatus(HttpStatus.OK)
+    fun getInfoComplete(): List<AuthorDTO> {
+        val authors: List<Author> = authorService.getAllAuthor()
+
+        return authors.map { author ->
+            val booksDTO = author.books.map { book ->
+                BookDTO(
+                    title = book.title,
+                    isbnBook = book.isbnBook,
+                    resume = book.resume,
+                    summary = book.summary,
+                    price = book.price,
+                    datePost = book.datePost,
+                )
+            }
+            val categoryDTO: CategoryDTO = CategoryDTO(name = author.books.first().categoryId.name)
+            AuthorDTO(
+                name = author.name,
+                email = author.email,
+                description = author.description,
+                category = categoryDTO,
+                books = booksDTO,
+            )
+        }
+    }
 
 }

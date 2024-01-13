@@ -26,5 +26,5 @@ data class Author(
 
     @OneToMany(mappedBy = "authorId", cascade = [CascadeType.ALL])
     @JsonBackReference
-    val book: List<Book> = emptyList()
+    val books: List<Book> = emptyList()
 )

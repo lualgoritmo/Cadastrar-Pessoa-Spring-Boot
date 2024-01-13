@@ -42,7 +42,6 @@ class CategoryController(private val categoryService: CategoryService) {
         val category: Category = categoryService.updateCategoryWithId(idCategory, updateCategoryDTO.toEntity())
         return UpdateCategoryDTO.fromEntity(category)
     }
-
     @GetMapping("/{idCategory}")
     @ResponseStatus(HttpStatus.OK)
     fun getByIdCategory(@PathVariable idCategory: Long): CreateCategoryDTO {
@@ -50,7 +49,6 @@ class CategoryController(private val categoryService: CategoryService) {
             val category: Category = categoryService.getByIdCategory(idCategory)
             return CreateCategoryDTO.fromEntity(category)
         } catch (e: CategoryNotFoundException) {
-            println("Id não encontrado aqui $idCategory")
             throw e
         }
 

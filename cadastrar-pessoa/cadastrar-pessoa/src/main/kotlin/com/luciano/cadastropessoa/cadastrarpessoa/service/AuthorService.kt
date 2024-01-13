@@ -1,5 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.service
 
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.AuthorDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 
 interface AuthorService {
@@ -8,4 +9,5 @@ interface AuthorService {
     fun getByIdAuthor(idAuthor: Long): Author
     fun updateAuthorWithId(idAuthor: Long, updatePerson: Author): Author
     fun deleteByIdAuthor(idAuthor: Long)
+
 }
