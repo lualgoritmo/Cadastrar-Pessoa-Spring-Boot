@@ -60,28 +60,63 @@ AuthorController(private val authorService: AuthorService) {
     @GetMapping("/inforcomplete")
     @ResponseStatus(HttpStatus.OK)
     fun getInfoComplete(): List<AuthorDTO> {
-        val authors: List<Author> = authorService.getAllAuthor()
-
-        return authors.map { author ->
-            val booksDTO = author.books.map { book ->
-                BookDTO(
-                    title = book.title,
-                    isbnBook = book.isbnBook,
-                    resume = book.resume,
-                    summary = book.summary,
-                    price = book.price,
-                    datePost = book.datePost,
-                )
+        return authorService.getAllAuthor().map { author ->
+            val categoriesDTO = author.books.map { it.categoryId.name }.distinct().map { CategoryDTO(name = it) }
+            author.books.map { book ->
+                BookDTO.fromEntity(book, CategoryDTO(name = book.categoryId.name))
             }
-            val categoryDTO: CategoryDTO = CategoryDTO(name = author.books.first().categoryId.name)
-            AuthorDTO(
-                name = author.name,
-                email = author.email,
-                description = author.description,
-                category = categoryDTO,
-                books = booksDTO,
-            )
+
+            AuthorDTO.fromEntity(author, categoriesDTO)
         }
     }
+
+//    @GetMapping("/inforcomplete")
+//    @ResponseStatus(HttpStatus.OK)
+//    fun getInfoComplete(): List<AuthorDTO> {
+//        return authorService.getAllAuthor().map { author ->
+//            val categoriesDTO = author.books.map { it.categoryId.name }.distinct().map { CategoryDTO(name = it) }
+//            val booksDTO = author.books.map { book ->
+//                BookDTO.fromEntity(book, CategoryDTO(name = book.categoryId.name))
+//            }
+//
+//            AuthorDTO(
+//                name = author.name,
+//                email = author.email,
+//                description = author.description,
+//                category = categoriesDTO,
+//                books = booksDTO
+//            )
+//        }
+//    }
+
+
+
+
+//    @GetMapping("/inforcomplete")
+//    @ResponseStatus(HttpStatus.OK)
+//    fun getInfoComplete(): List<AuthorDTO> {
+//        val authors: List<Author> = authorService.getAllAuthor()
+//
+//        return authors.map { author ->
+//            val booksDTO = author.books.map { book ->
+//                BookDTO(
+//                    title = book.title,
+//                    isbnBook = book.isbnBook,
+//                    resume = book.resume,
+//                    summary = book.summary,
+//                    price = book.price,
+//                    datePost = book.datePost,
+//                )
+//            }
+//            val categoryDTO: CategoryDTO = CategoryDTO(name = author.books.categoryId.name)
+//            AuthorDTO(
+//                name = author.name,
+//                email = author.email,
+//                description = author.description,
+//                category = categoryDTO,
+//                books = booksDTO,
+//            )
+//        }
+//    }
 
 }
