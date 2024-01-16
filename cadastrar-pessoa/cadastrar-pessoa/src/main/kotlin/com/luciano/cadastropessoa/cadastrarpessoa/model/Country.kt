@@ -7,10 +7,10 @@ import jakarta.validation.constraints.NotNull
 
 @Entity
 @Table(name = "tb_countries")
-data class Countries(
+data class Country(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idCountrie: Long,
+    val idCountry: Long,
     @field:NotBlank(message = "O Pais não pode estar em branco")
     @field:NotNull(message = "O noem do Pais não pode ser nulo")
     val name: String,

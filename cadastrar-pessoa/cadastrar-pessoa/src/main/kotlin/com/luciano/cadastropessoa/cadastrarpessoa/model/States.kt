@@ -11,5 +11,5 @@ data class States(
     val name: String,
     @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "counter_id")
-    val counterId: Countries
+    val counterId: Country
 )

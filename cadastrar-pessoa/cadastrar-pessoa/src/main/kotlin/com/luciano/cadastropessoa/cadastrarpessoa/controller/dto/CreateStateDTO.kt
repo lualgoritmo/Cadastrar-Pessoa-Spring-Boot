@@ -1,4 +1,3 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
-class StatesDTO(name: String) {
-}
+data class CreateStateDTO(val name: String)

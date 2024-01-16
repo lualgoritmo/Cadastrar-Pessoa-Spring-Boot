@@ -15,8 +15,8 @@ AuthorController(private val authorService: AuthorService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createAuthor(@RequestBody @Valid createAuthorDTO: RequestAuthorDTO): RequestAuthorDTO {
-        val author: Author = authorService.createAuthor(createAuthorDTO.toEntity())
+    fun createAuthor(@RequestBody @Valid requestAuthorDTO: RequestAuthorDTO): RequestAuthorDTO {
+        val author: Author = authorService.createAuthor(requestAuthorDTO.toEntity())
         return RequestAuthorDTO.fromEntity(author)
     }
 

@@ -1,3 +1,3 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.exception
 
-class AuthorNotFoundException(id: Long) : RuntimeException("NÃO EXISTE ESSE ID TESTE ERRO: $id")
+class AuthorNotFoundException(idCountry: Long) : RuntimeException("NÃO EXISTE ESSE ID TESTE ERRO: $idCountry")
