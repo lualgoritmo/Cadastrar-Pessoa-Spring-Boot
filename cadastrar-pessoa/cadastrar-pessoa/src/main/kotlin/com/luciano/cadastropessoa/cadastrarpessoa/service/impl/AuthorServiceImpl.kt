@@ -13,7 +13,8 @@ class AuthorServiceImpl(
     private val authorRepository: AuthorRepository
 ) : AuthorService {
     @Transactional
-    override fun createAuthor(author: Author): Author = authorRepository.save(author)
+    override fun createAuthor(author: Author): Author =
+        authorRepository.save(author)
     override fun getAllAuthor(): List<Author> = authorRepository.findAll()
 
     @Transactional

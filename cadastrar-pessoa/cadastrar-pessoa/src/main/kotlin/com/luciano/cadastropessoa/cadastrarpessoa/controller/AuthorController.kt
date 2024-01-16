@@ -15,29 +15,29 @@ AuthorController(private val authorService: AuthorService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createAuthor(@RequestBody @Valid createAuthorDTO: CreateAuthorDTO): CreateAuthorDTO {
+    fun createAuthor(@RequestBody @Valid createAuthorDTO: RequestAuthorDTO): RequestAuthorDTO {
         val author: Author = authorService.createAuthor(createAuthorDTO.toEntity())
-        return CreateAuthorDTO.fromEntity(author)
+        return RequestAuthorDTO.fromEntity(author)
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    fun getAllAuthor(): List<CreateAuthorDTO> {
+    fun getAllAuthor(): List<RequestAuthorDTO> {
         val authorList: List<Author> = authorService.getAllAuthor()
 
         if (authorList.isEmpty()) {
             println("Lista vazia no getAllPerson do controller")
         }
 
-        return authorList.map { CreateAuthorDTO.fromEntity(it) }.toList()
+        return authorList.map { RequestAuthorDTO.fromEntity(it) }.toList()
     }
 
     @GetMapping("/{idAuthor}")
     @ResponseStatus(HttpStatus.OK)
-    fun getByIdAuthor(@PathVariable idAuthor: Long): CreateAuthorDTO {
+    fun getByIdAuthor(@PathVariable idAuthor: Long): RequestAuthorDTO {
         try {
             val author: Author = authorService.getByIdAuthor(idAuthor)
-            return CreateAuthorDTO.fromEntity(author)
+            return RequestAuthorDTO.fromEntity(author)
         } catch (e: AuthorNotFoundException) {
             println("Id não encontrado aqui $idAuthor")
             throw e
@@ -59,14 +59,14 @@ AuthorController(private val authorService: AuthorService) {
 
     @GetMapping("/inforcomplete")
     @ResponseStatus(HttpStatus.OK)
-    fun getInfoComplete(): List<AuthorDTO> {
+    fun getInfoComplete(): List<AuthorResponse> {
         return authorService.getAllAuthor().map { author ->
             val categoriesDTO = author.books.map { it.categoryId.name }.distinct().map { CategoryDTO(name = it) }
             author.books.map { book ->
                 BookDTO.fromEntity(book, CategoryDTO(name = book.categoryId.name))
             }
 
-            AuthorDTO.fromEntity(author, categoriesDTO)
+            AuthorResponse.fromEntity(author, categoriesDTO)
         }
     }
 
