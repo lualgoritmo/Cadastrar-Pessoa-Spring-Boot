@@ -21,10 +21,12 @@ class BookController(private val bookService: BookService) {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    fun getAllBooks(): List<CreateBookDTO?> {
-        val books: List<Book> = bookService.getAllBooks()
-        if (books.isEmpty()) {
-            println("A lista está vazia!")
+    fun getAllBooks(): List<CreateBookDTO> {
+        val books: List<Book> = bookService.getAllBooks().also {
+            if (it.isEmpty()) {
+                println("Está lista está vazia!")
+            }
+            println("A lista possui ${it.size} itens")
         }
         return books.map { CreateBookDTO.fromEntity(it) }.toList()
     }

@@ -3,7 +3,7 @@ package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Country
 import com.luciano.cadastropessoa.cadastrarpessoa.util.UniqueValue
 
-data class CreateCountryDTO(
+data class CountryDTO(
     @field:UniqueValue(
         message = "Esse País já existe!",
         fieldName = "name",
@@ -14,6 +14,6 @@ data class CreateCountryDTO(
     fun toEntity() = Country(idCountry = 0, name = this.name)
 
     companion object {
-        fun fromEntity(country: Country) = CreateCountryDTO(name = country.name)
+        fun fromEntity(country: Country) = CountryDTO(name = country.name)
     }
 }

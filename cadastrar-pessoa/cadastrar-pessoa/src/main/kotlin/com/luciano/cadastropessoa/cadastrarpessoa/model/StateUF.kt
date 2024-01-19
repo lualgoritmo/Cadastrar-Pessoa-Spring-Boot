@@ -1,15 +1,15 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.model
-
 import jakarta.persistence.*
 
 @Entity
 @Table(name = "tb_states")
-data class States(
+data class StateUF(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idStates: Long,
+    val idState: Long,
     val name: String,
+
     @ManyToOne(cascade = [CascadeType.ALL])
-    @JoinColumn(name = "counter_id")
-    val counterId: Country
+    @JoinColumn(name = "country_id")
+    val country: Country,
 )

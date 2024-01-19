@@ -3,7 +3,7 @@ package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 import BookDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 
-data class AuthorResponse(
+data class AuthorResponseDTO(
 
     val name: String,
 
@@ -16,8 +16,8 @@ data class AuthorResponse(
     fun toEntity() = Author(idAuthor = 0, name = this.name, this.email, this.description)
 
     companion object {
-        fun fromEntity(author: Author, categoryDTOList: List<CategoryDTO>): AuthorResponse {
-            return AuthorResponse(
+        fun fromEntity(author: Author, categoryDTOList: List<CategoryDTO>): AuthorResponseDTO {
+            return AuthorResponseDTO(
                 name = author.name,
                 email = author.email,
                 description = author.description,

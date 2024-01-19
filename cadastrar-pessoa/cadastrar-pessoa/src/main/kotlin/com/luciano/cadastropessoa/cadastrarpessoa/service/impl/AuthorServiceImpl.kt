@@ -16,7 +16,6 @@ class AuthorServiceImpl(
     override fun createAuthor(author: Author): Author =
         authorRepository.save(author)
     override fun getAllAuthor(): List<Author> = authorRepository.findAll()
-
     @Transactional
     override fun getByIdAuthor(idAuthor: Long): Author = authorRepository.findById(idAuthor)
         .orElseThrow { AuthorNotFoundException(idAuthor) }
@@ -34,7 +33,6 @@ class AuthorServiceImpl(
 
         return authorRepository.save(updatedAuthor)
     }
-
     @Transactional
     override fun deleteByIdAuthor(idAuthor: Long) {
         try {

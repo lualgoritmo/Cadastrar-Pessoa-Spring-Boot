@@ -18,20 +18,17 @@ class CategoryController(private val categoryService: CategoryService) {
         val category: Category = categoryService.createCategory(categoryDTO.toEntity())
         return CreateCategoryDTO.fromEntity(category)
     }
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     fun getAllCategorys(): List<CreateCategoryDTO> {
-
-        val listCategorys: List<Category> = categoryService.getAllCategorys()
-
-        if (listCategorys.isEmpty()) {
-            println("Lista de categorias vazia no Controller")
+        val listCategorys: List<Category> = categoryService.getAllCategorys().also {
+            if (it.isEmpty()) {
+                println("Lista de categorias vazia no Controller")
+            }
         }
 
         return listCategorys.map { CreateCategoryDTO.fromEntity(it) }.toList()
     }
-
     @PutMapping("/{idCategory}")
     @ResponseStatus(HttpStatus.OK)
     fun updateCategoryWithId(

@@ -11,10 +11,21 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.context.request.WebRequest
+
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @RestControllerAdvice
 class ControllerAdvice {
 
+    @ExceptionHandler(CountryNotFoundException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleExceptionIdCategory(ex: CountryNotFoundException, request: WebRequest): ErrorResponse {
+        return ErrorResponse(
+            400,
+            "id do Country incorreto, não encontrado no servidor!",
+            "0003",
+            null
+        )
+    }
     @ExceptionHandler(AuthorNotFoundException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleExceptionIdAuthor(ex: AuthorNotFoundException, request: WebRequest): ErrorResponse {
@@ -22,6 +33,16 @@ class ControllerAdvice {
             400,
             "id incorreto, não encontrado no servidor!",
             "0001",
+            null
+        )
+    }
+    @ExceptionHandler(StateNotFoundException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleExceptionIdCategory(ex: StateNotFoundException, request: WebRequest): ErrorResponse {
+        return ErrorResponse(
+            404,
+            "id do State incorreto, não encontrado no servidor!",
+            "0003",
             null
         )
     }

@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/authors")
-class
-AuthorController(private val authorService: AuthorService) {
+class AuthorController(private val authorService: AuthorService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -59,14 +58,14 @@ AuthorController(private val authorService: AuthorService) {
 
     @GetMapping("/inforcomplete")
     @ResponseStatus(HttpStatus.OK)
-    fun getInfoComplete(): List<AuthorResponse> {
+    fun getInfoComplete(): List<AuthorResponseDTO> {
         return authorService.getAllAuthor().map { author ->
             val categoriesDTO = author.books.map { it.categoryId.name }.distinct().map { CategoryDTO(name = it) }
             author.books.map { book ->
                 BookDTO.fromEntity(book, CategoryDTO(name = book.categoryId.name))
             }
 
-            AuthorResponse.fromEntity(author, categoriesDTO)
+            AuthorResponseDTO.fromEntity(author, categoriesDTO)
         }
     }
 
