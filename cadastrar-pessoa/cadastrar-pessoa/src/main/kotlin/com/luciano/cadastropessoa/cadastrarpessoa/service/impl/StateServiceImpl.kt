@@ -12,7 +12,7 @@ class StateServiceImpl(private val stateRepository: StateRepository) : StateServ
     override fun createState(state: StateUF): StateUF = stateRepository.save(state)
     override fun getAllStates(): List<StateUF> = stateRepository.findAll()
     @Transactional
-    override fun getWithIdState(idState: Long): StateUF {
+    override fun getStateById(idState: Long): StateUF {
         return stateRepository.findById(idState).orElseThrow {
             throw StateNotFoundException(idState)
         }

@@ -49,7 +49,7 @@ class StateController(private val stateService: StateService, private val countr
     @ResponseStatus(HttpStatus.OK)
     fun getWithIdState(@PathVariable idState: Long): RequireStateDTO {
         try {
-            val state = stateService.getWithIdState(idState)
+            val state = stateService.getStateById(idState)
             return RequireStateDTO.fromEntity(state)
         } catch (ex: StateNotFoundException) {
             throw ex

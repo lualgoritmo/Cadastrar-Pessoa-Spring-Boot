@@ -16,7 +16,6 @@ class CountryServiceImpl(
 ) : CountryService {
     override fun createCountrie(country: Country): Country = countryRepository.save(country)
     override fun getAllCountries(): List<Country> = countryRepository.findAll()
-
     @Transactional
     override fun getWithIdCountry(idCountry: Long): Country = countryRepository.findById(idCountry).orElseThrow {
         CountryNotFoundException(idCountry)

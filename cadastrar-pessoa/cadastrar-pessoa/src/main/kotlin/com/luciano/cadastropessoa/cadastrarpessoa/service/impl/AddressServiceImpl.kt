@@ -4,8 +4,10 @@ import com.luciano.cadastropessoa.cadastrarpessoa.exception.AddressCardNotFoundE
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.AddressRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.AddressService
+import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import kotlin.jvm.optionals.getOrElse
+
 @Service
 class AddressServiceImpl(private val addressRepository: AddressRepository) : AddressService {
     override fun createAddress(address: Address) = addressRepository.save(address)
@@ -15,6 +17,7 @@ class AddressServiceImpl(private val addressRepository: AddressRepository) : Add
             throw AddressCardNotFoundException(idAddress)
         }
     }
+
     override fun updateAddress(idAddress: Long, address: Address): Address {
         TODO("Not yet implemented")
     }

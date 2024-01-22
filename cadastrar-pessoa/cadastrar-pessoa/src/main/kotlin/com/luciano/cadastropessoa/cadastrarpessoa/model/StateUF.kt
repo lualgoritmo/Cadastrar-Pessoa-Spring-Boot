@@ -9,7 +9,7 @@ data class StateUF(
     val idState: Long,
     val name: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL])
+    @ManyToOne
     @JoinColumn(name = "country_id")
     val country: Country,
 )

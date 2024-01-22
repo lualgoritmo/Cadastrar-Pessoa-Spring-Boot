@@ -10,10 +10,10 @@ data class Address(
     val cep: String,
     val road: String,
     val city: String,
-    val numberResidence: Int,
+    val numberResidence: String,
     val complement: String,
 
-    @ManyToOne(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "state_id")
-    val state: StateUF
+    var state: StateUF
 )

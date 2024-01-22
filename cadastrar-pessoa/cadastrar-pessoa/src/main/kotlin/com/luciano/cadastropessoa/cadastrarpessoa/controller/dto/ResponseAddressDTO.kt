@@ -7,7 +7,7 @@ class ResponseAddressDTO(
     val cep: String,
     val road: String,
     val city: String,
-    val numberResidence: Int,
+    val numberResidence: String,
     val complement: String,
     val country: CountryDTO,
     val state: StateUF

@@ -2,7 +2,7 @@ package com.luciano.cadastropessoa.cadastrarpessoa.model
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "tb_payment")
+@Table(name = "tb_client")
 data class Client(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

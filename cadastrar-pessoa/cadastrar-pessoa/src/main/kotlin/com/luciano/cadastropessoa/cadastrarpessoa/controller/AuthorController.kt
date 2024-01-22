@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/authors")
 class AuthorController(private val authorService: AuthorService) {
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createAuthor(@RequestBody @Valid requestAuthorDTO: RequestAuthorDTO): RequestAuthorDTO {
