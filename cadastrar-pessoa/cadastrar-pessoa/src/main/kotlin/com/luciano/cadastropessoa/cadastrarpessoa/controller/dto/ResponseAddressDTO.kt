@@ -1,7 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
-import com.luciano.cadastropessoa.cadastrarpessoa.model.StateUF
 
 class ResponseAddressDTO(
     val cep: String,
@@ -9,8 +8,7 @@ class ResponseAddressDTO(
     val city: String,
     val numberResidence: String,
     val complement: String,
-    val country: CountryDTO,
-    val state: StateUF
+    val state: String
 ) {
     fun toEntity() = Address(
         idAddress = 0,
@@ -19,19 +17,26 @@ class ResponseAddressDTO(
         city = this.city,
         numberResidence = this.numberResidence,
         complement = this.complement,
-        state = this.state
+        state = ResponseStateDTO(name = this.state).toEntity()
     )
-
     companion object {
-        fun fromToEntity(address: Address, countryDTO: CountryDTO) =
-            ResponseAddressDTO(
-                cep = address.cep,
-                road = address.road,
-                city = address.city,
-                numberResidence = address.numberResidence,
-                complement = address.complement,
-                country = countryDTO,
-                state = address.state
+        private val processedCountries: MutableMap<String, CountryDTO> = mutableMapOf()
+        fun fromToEntity(address: Address): ResponseAddressDTO {
+            //val countryName = address.state.country.name
+            //val state = ResponseStateDTO(name = address.state.name)
+//            val countryDTO = processedCountries.computeIfAbsent(countryName) {
+//                CountryDTO(countryName)
+//            }
+
+            return ResponseAddressDTO(
+                    cep = address.cep,
+                    road = address.road,
+                    city = address.city,
+                    numberResidence = address.numberResidence,
+                    complement = address.complement,
+                    state = address.state.name
             )
+        }
     }
 }
+
