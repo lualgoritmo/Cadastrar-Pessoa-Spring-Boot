@@ -4,9 +4,9 @@ import com.luciano.cadastropessoa.cadastrarpessoa.model.Country
 import com.luciano.cadastropessoa.cadastrarpessoa.model.StateUF
 
 data class ResponseStateDTO(val name: String) {
-    fun toEntity() = StateUF(idState = 0,
+    fun toEntity(country: Country) = StateUF(
             name = name,
-            country = Country(0, name = "", states = emptyList())
+            country = country
     )
 
     companion object {

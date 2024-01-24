@@ -22,11 +22,11 @@ class BookServiceImpl(
     @Transactional
     override fun createBook(bookDTO: CreateBookDTO): Book {
         try {
-            val author: Author = authorService.getByIdAuthor(bookDTO.authorId)
-            val category: Category = categoryService.getByIdCategory(bookDTO.categoryId)
+            val author: Author = authorService.getByIdAuthor(bookDTO.authorId!!)
+            val category: Category = categoryService.getByIdCategory(bookDTO.categoryId!!)
             return bookRepository.save(bookDTO.toEntity(author, category))
         } catch (ex: EmptyResultDataAccessException) {
-            throw BookNotFoundException(bookDTO.authorId)
+            throw BookNotFoundException(bookDTO.authorId!!)
         }
 
     }

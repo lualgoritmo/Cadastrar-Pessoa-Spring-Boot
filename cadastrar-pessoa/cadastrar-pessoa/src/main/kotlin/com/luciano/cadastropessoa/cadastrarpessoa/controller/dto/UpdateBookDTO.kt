@@ -34,7 +34,6 @@ data class UpdateBookDTO(
     val categoryId: Category
 ) {
     fun toEntity() = Book(
-        0,
         title = this.title,
         isbnBook = this.isbnBook,
         resume = this.resume,

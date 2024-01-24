@@ -6,13 +6,12 @@ import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
 import org.jetbrains.annotations.NotNull
-
 @Entity
 @Table(name = "tb_author")
 data class Author(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     val idAuthor: Long,
+     val idAuthor: Long? = null,
     @field:NotBlank(message = "O nome não pode estar em branco")
     @field:NotNull("O nome não pode ser nulo") val name: String,
 //    @Column(unique = true)

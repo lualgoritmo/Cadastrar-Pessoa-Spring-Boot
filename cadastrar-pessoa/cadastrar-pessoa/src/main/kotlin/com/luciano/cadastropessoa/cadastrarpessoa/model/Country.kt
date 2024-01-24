@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull
 data class Country(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idCountry: Long,
+    val idCountry: Long? = null,
     @field:NotBlank(message = "O Pais não pode estar em branco")
     @field:NotNull("O nome do Pais não pode ser nulo")
     val name: String,

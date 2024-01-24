@@ -30,11 +30,10 @@ data class CreateBookDTO(
     @field:NotNull("A data não pode ser nulo")
     val datePost: String,
 
-    val authorId: Long,
-    val categoryId: Long
+    val authorId: Long? = null,
+    val categoryId: Long? = null
 ) {
     fun toEntity(author: Author, category: Category) = Book(
-            idBook = 0,
             title = this.title,
             isbnBook = this.isbnBook,
             resume = this.resume,

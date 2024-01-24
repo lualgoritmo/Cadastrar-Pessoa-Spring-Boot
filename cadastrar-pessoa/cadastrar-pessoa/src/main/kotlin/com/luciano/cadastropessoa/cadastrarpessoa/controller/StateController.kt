@@ -18,10 +18,9 @@ class StateController(private val stateService: StateService, private val countr
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createState(@RequestBody @Valid createStateDTO: RequireStateDTO): RequireStateDTO {
-        val country: Country = countryService.getWithIdCountry(createStateDTO.countryId)
+        val country: Country = countryService.getWithIdCountry(createStateDTO.countryId!!)
 
-        val newState = StateUF(idState = 0, name = createStateDTO.name, country = country)
-        country.states = country.states.toMutableList().apply { add(newState) }
+        val newState = StateUF(name = createStateDTO.name, country = country)
 
         val createState: StateUF = stateService.createState(newState)
 

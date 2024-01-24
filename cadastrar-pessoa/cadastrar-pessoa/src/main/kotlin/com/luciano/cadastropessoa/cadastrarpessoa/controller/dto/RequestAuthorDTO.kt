@@ -26,7 +26,6 @@ data class RequestAuthorDTO(
     val description: String,
 ) {
     fun toEntity() = Author(
-        idAuthor = 0,
         name = this.name,
         email = this.email,
         description = this.description

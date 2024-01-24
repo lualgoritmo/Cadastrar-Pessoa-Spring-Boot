@@ -17,7 +17,6 @@ class UpdateAuthorDTO(
     private val book: List<Book> = emptyList()
 ) {
     fun toEntity() = Author(
-        idAuthor = 0,
         name = this.name,
         email = this.email,
         description = this.description,

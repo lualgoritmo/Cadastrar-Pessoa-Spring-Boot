@@ -4,16 +4,17 @@ import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
 import com.luciano.cadastropessoa.cadastrarpessoa.util.UniqueValue
 
 data class CreateCategoryDTO(
-    @field:UniqueValue(
-        message = "Essa Categoria  já existe!",
-        fieldName = "name",
-        domainClass = Category::class
-    )
-    val name: String
+        @field:UniqueValue(
+                message = "Essa Categoria  já existe!",
+                fieldName = "name",
+                domainClass = Category::class
+        )
+        val name: String
 ) {
-    fun toEntity() = Category(idCategory = 0, name = this.name)
+    fun toEntity() = Category(name = this.name)
 
-    companion object { fun fromEntity(category: Category) =
-            CreateCategoryDTO(name = category.name)
+    companion object {
+        fun fromEntity(category: Category) =
+                CreateCategoryDTO(name = category.name)
     }
 }

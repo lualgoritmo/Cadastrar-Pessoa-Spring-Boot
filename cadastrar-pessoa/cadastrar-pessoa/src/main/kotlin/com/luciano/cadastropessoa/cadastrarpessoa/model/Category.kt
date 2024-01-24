@@ -7,14 +7,14 @@ import jakarta.validation.constraints.NotNull
 @Entity
 @Table(name = "tb_category")
 data class Category(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val idCategory: Long,
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        val idCategory: Long? = null,
 
-    @Column(unique = true)
-    @field:NotNull(message = "A categoria não pode ser null")
-    @field:NotBlank(message = "O nome não pode estar em branco")
-    val name: String,
-    @OneToMany(mappedBy = "categoryId", cascade = [CascadeType.ALL])
-    val book: List<Book> = emptyList()
+        @Column(unique = true)
+        @field:NotNull(message = "A categoria não pode ser null")
+        @field:NotBlank(message = "O nome não pode estar em branco")
+        val name: String,
+        @OneToMany(mappedBy = "categoryId", cascade = [CascadeType.ALL])
+        val book: List<Book> = emptyList()
 )

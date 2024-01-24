@@ -11,7 +11,7 @@ data class CountryDTO(
     )
     val name: String
 ) {
-    fun toEntity() = Country(idCountry = 0, name = this.name)
+    fun toEntity() = Country(name = this.name)
 
     companion object {
         fun fromEntity(country: Country) = CountryDTO(name = country.name)

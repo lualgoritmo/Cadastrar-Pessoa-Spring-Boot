@@ -20,30 +20,32 @@ class ControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleExceptionIdCategory(ex: CountryNotFoundException, request: WebRequest): ErrorResponse {
         return ErrorResponse(
-            400,
-            "id do Country incorreto, não encontrado no servidor!",
-            "0003",
-            null
+                400,
+                "id do Country incorreto, não encontrado no servidor!",
+                "0003",
+                null
         )
     }
+
     @ExceptionHandler(AuthorNotFoundException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleExceptionIdAuthor(ex: AuthorNotFoundException, request: WebRequest): ErrorResponse {
         return ErrorResponse(
-            400,
-            "id incorreto, não encontrado no servidor!",
-            "0001",
-            null
+                400,
+                "id incorreto, não encontrado no servidor!",
+                "0001",
+                null
         )
     }
+
     @ExceptionHandler(StateNotFoundException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleExceptionIdCategory(ex: StateNotFoundException, request: WebRequest): ErrorResponse {
         return ErrorResponse(
-            404,
-            "id do State incorreto, não encontrado no servidor!",
-            "0003",
-            null
+                404,
+                "id do State incorreto, não encontrado no servidor!",
+                "0003",
+                null
         )
     }
 
@@ -51,10 +53,10 @@ class ControllerAdvice {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     fun handleRuntimeException(ex: BookNotFoundException, request: WebRequest): ErrorResponse {
         return ErrorResponse(
-            404,
-            "BOOK NÃO ENCOSNTRADO",
-            "0002",
-            null
+                404,
+                "BOOK NÃO ENCOSNTRADO",
+                "0002",
+                null
         )
     }
 
@@ -62,13 +64,22 @@ class ControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleExceptionIdCategory(ex: CategoryNotFoundException, request: WebRequest): ErrorResponse {
         return ErrorResponse(
-            400,
-            "id da categoria incorreto, não encontrado no servidor!",
-            "0003",
-            null
+                400,
+                "id da categoria incorreto, não encontrado no servidor!",
+                "0003",
+                null
         )
     }
-
+    @ExceptionHandler(ClientNotFoundException::class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    fun handleExceptionIdCategory(ex: ClientNotFoundException, request: WebRequest): ErrorResponse {
+        return ErrorResponse(
+                400,
+                "id da categoria incorreto, não encontrado no servidor!",
+                "0003",
+                null
+        )
+    }
     @ExceptionHandler(Exception::class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     fun handleException(ex: Exception): Map<String, String> {
@@ -91,6 +102,7 @@ class ControllerAdvice {
         errorMap["errors"] = errors
         return errorMap
     }
+
     @ExceptionHandler(HttpMessageNotReadableException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleJsonParseException(ex: HttpMessageNotReadableException): Map<String, String> {

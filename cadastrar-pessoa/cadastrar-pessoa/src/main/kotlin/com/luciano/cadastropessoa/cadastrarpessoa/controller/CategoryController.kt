@@ -22,7 +22,7 @@ class CategoryController(private val categoryService: CategoryService) {
     @ResponseStatus(HttpStatus.OK)
     fun getAllCategorys(): List<CreateCategoryDTO> {
         val listCategorys: List<Category> = categoryService.getAllCategorys().also {
-            if (it.isEmpty()) {
+            if (!it.isEmpty()) {
                 println("Lista de categorias vazia no Controller")
             }
         }

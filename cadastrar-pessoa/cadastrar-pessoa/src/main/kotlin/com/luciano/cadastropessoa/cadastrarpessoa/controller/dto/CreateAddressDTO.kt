@@ -1,25 +1,42 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
+import com.luciano.cadastropessoa.cadastrarpessoa.model.Client
 import com.luciano.cadastropessoa.cadastrarpessoa.model.StateUF
+import jakarta.validation.constraints.NotBlank
+import org.jetbrains.annotations.NotNull
 
 data class CreateAddressDTO(
+        @field:NotBlank(message = "O cep não pode estar em branco")
+        @field:NotNull("O ceps não pode ser nulo")
         val cep: String,
-        val road: String,
-        val city: String,
-        val numberResidence: String,
-        val complement: String,
-        val stateId: Long
 
+        @field:NotBlank(message = "A rua não pode estar em branco")
+        @field:NotNull("A rua não pode ser nulo")
+        val road: String,
+
+        @field:NotBlank(message = "A cidade  não pode estar em branco")
+        @field:NotNull("A cidade não pode ser nulo")
+        val city: String,
+
+        @field:NotBlank(message = "O número da residência não pode estar em branco")
+        @field:NotNull("O número da residência não pode ser nulo")
+        val numberResidence: String,
+
+        @field:NotBlank(message = "O nome não pode estar em branco")
+        @field:NotNull("O nome não pode ser nulo")
+        val complement: String,
+        val stateId: Long?,
+        val idClient: Long?
 ) {
-    fun toEntity(stateUF: StateUF) = Address(
-            idAddress = 0,
+    fun toEntity(stateUF: StateUF, client: Client) = Address(
             cep = this.cep,
             road = this.road,
             city = this.city,
             numberResidence = this.numberResidence,
             complement = this.complement,
-            state = stateUF
+            state = stateUF,
+            client = client
     )
 
     companion object {
@@ -29,7 +46,8 @@ data class CreateAddressDTO(
                 city = address.city,
                 numberResidence = address.numberResidence,
                 complement = address.complement,
-                stateId = address.state.idState
+                stateId = address.state.idState,
+                idClient = address.client.idClient
         )
     }
 }

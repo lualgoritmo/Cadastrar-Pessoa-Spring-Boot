@@ -44,7 +44,7 @@ class AuthorController(private val authorService: AuthorService) {
 
     @PutMapping("/{idAuthor}/updates")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public fun updateAuthorWitchId(
+    fun updateAuthorWitchId(
         @PathVariable idAuthor: Long, @RequestBody @Valid updateAuthorDTO: UpdateAuthorDTO
     ): UpdateAuthorDTO {
         val updateAuthor = authorService.updateAuthorWithId(idAuthor, updateAuthorDTO.toEntity())

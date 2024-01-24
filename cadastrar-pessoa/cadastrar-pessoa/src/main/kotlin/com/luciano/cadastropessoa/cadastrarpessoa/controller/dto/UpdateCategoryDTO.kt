@@ -16,7 +16,7 @@ data class UpdateCategoryDTO(
     @field:NotNull(message = "O nome não pode ser nulo")
     val name: String
 ) {
-    fun toEntity() = Category(0, name = this.name)
+    fun toEntity() = Category(name = this.name)
 
     companion object {
         fun fromEntity(category: Category) = UpdateCategoryDTO(name = category.name)
