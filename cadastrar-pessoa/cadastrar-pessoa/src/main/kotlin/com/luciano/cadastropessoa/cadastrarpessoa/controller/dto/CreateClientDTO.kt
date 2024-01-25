@@ -1,6 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Client
+import com.luciano.cadastropessoa.cadastrarpessoa.model.ClientUser
 import com.luciano.cadastropessoa.cadastrarpessoa.util.UniqueValue
 import jakarta.validation.constraints.NotBlank
 import org.jetbrains.annotations.NotNull
@@ -9,7 +9,7 @@ data class CreateClientDTO(
         @field:UniqueValue(
                 message = "Este e-mail já está sendo usado!",
                 fieldName = "email",
-                domainClass = Client::class
+                domainClass = ClientUser::class
         )
         val email: String,
         @field:NotNull("O nome não pode ser nulo")
@@ -25,7 +25,7 @@ data class CreateClientDTO(
         @field:NotBlank(message = "O telefone não pode estar em branco")
         val phone: String
 ) {
-    fun toEntity() = Client(
+    fun toEntity() = ClientUser(
             idClient = 0,
             email = this.email,
             name = this.name,
@@ -36,7 +36,7 @@ data class CreateClientDTO(
     )
 
     companion object {
-        fun fromEntity(client: Client) = CreateClientDTO(
+        fun fromEntity(client: ClientUser) = CreateClientDTO(
                 email = client.email,
                 name = client.name,
                 surname = client.surname,

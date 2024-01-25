@@ -16,24 +16,27 @@ class AddressServiceImpl(
         private val addressRepository: AddressRepository,
         private val stateService: StateService,
         private val clientService: ClientService
-        ) : AddressService {
+) : AddressService {
+    @Transactional
+    override fun createAddress(createAddressDTO: CreateAddressDTO): Address {
+        val client = clientService.getByIdClient(createAddressDTO.clientId!!)
+        val state = stateService.getStateById(createAddressDTO.stateId!!)
 
-    override fun createAddress(addressDTO: CreateAddressDTO):Address {
-        val client = clientService.getByIdClient(addressDTO.idClient!!)
-        val state = stateService.getStateById(addressDTO.stateId!!)
-
-        val address: Address = addressDTO.toEntity(stateUF = state,client = client)
+        val address: Address = createAddressDTO.toEntity(stateUF = state, client = client)
         return addressRepository.save(address)
     }
+
     override fun getAllAddress(): List<Address> = addressRepository.findAll()
     override fun getByIdAddress(idAddress: Long): Address {
         return addressRepository.findById(idAddress).getOrElse {
             throw AddressCardNotFoundException(idAddress)
         }
     }
+
     override fun updateAddress(idAddress: Long, address: Address): Address {
         TODO("Not yet implemented")
     }
+
     override fun deleteWithIdAddress(idAddress: Long) {
         TODO("Not yet implemented")
     }

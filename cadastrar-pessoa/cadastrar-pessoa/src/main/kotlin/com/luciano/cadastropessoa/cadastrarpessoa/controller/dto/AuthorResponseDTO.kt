@@ -23,7 +23,6 @@ data class AuthorResponseDTO(
         val books: List<BookDTO>
 ) {
     fun toEntity() = Author(name = this.name, email = this.email, description = this.description)
-
     companion object {
         fun fromEntity(author: Author, categoryDTOList: List<CategoryDTO>): AuthorResponseDTO {
             return AuthorResponseDTO(

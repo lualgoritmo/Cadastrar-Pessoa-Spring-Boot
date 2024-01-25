@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Email
 
 @Entity
 @Table(name = "tb_client")
-data class Client(
+data class ClientUser(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         val idClient: Long? = null,
