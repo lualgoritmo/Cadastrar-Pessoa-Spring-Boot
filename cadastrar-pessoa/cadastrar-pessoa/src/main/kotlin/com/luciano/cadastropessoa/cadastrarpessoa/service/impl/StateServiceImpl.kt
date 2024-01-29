@@ -17,6 +17,7 @@ class StateServiceImpl(private val stateRepository: StateRepository) : StateServ
             throw StateNotFoundException(idState)
         }
     }
+    @Transactional
     override fun updateWithIdState(idState: Long, updateState: StateUF): StateUF {
         val existingState = stateRepository.findById(idState).orElseThrow {
             StateNotFoundException(idState)

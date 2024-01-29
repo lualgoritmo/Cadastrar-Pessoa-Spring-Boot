@@ -5,12 +5,14 @@ import com.luciano.cadastropessoa.cadastrarpessoa.repository.AuthorRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.AuthorServiceImpl
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.springframework.boot.test.context.SpringBootTest
+import java.util.*
 
 @SpringBootTest
 class AuthorServiceImplTest {
@@ -25,14 +27,16 @@ class AuthorServiceImplTest {
         authorServiceImpl = AuthorServiceImpl(authorRepository)
     }
 
-    @Test
-    fun `when create Book then return one Book`() {
-        val author: Author = Author(
+    private fun authorObject() = Author(
             1L,
             "Luciano",
             "luciano@lucianos.com",
             "Autor experiente"
-        )
+    )
+
+    @Test
+    fun `when create Book then return one Book`() {
+        val author: Author = authorObject()
 
         val expectedAuthor = author
 
@@ -47,93 +51,25 @@ class AuthorServiceImplTest {
         verify(authorRepository, times(1)).save(author)
     }
 
-//    @Test
-//    fun `when create Author then return created Author`() {
-//
-//        val authorToSave: Author = Author(
-//            1L,
-//            "Luciano",
-//            "luciano@lucianos.com",
-//            "Autor experiente"
-//        )
-//
-//        val savedAuthor: Author = Author(
-//            1L,
-//            "Luciano",
-//            "luciano@lucianos.com",
-//            "Autor experiente"
-//        )
-//
-//        val captor = ArgumentCaptor.forClass(Author::class.java)
-//
-//        Mockito.`when`(authorRepository.save(captor.capture())).thenReturn(savedAuthor)
-//
-//        val createdAuthor = authorServiceImpl.createAuthor(authorToSave)
-//
-//        assertEquals(savedAuthor, createdAuthor)
-//        assertEquals(savedAuthor.idAuthor, createdAuthor.idAuthor)
-//        assertEquals(savedAuthor.name, createdAuthor.name)
-//        assertEquals(savedAuthor.email, createdAuthor.email)
-//
-//        verify(authorRepository).save(authorToSave)
-//
-//        assertEquals(authorToSave, captor.value)
-//    }
-
-//    @Test
-//    fun `When getallAuthor return list authores`() {
-//        val author: Author = Author(
-//            1L,
-//            "Luciano",
-//            "luciano@lucianos.com",
-//            "Autor experiente"
-//        )
-//        val authorTwo: Author = Author(
-//            2L,
-//            "Maria",
-//            "maria@lucianos.com",
-//            "Autora experiente"
-//        )
-//        val authorTree = Author(
-//            3L,
-//            "Luciano",
-//            "luciano@lucianos.com",
-//            "Autor experiente"
-//        )
-////        authorServiceImpl.createAuthor(author)
-////        authorServiceImpl.createAuthor(authorTwo)
-////        authorServiceImpl.createAuthor(authorTree)
-//
-//        `when`(authorRepository.findAll()).thenReturn(listOf(author, authorTwo, authorTree))
-//        val retrievedAuthors: List<Author> = authorServiceImpl.getAllAuthor()
-//
-//        assertEquals(3, retrievedAuthors.size)
-//        assertEquals(author, retrievedAuthors[0])
-//        assertEquals(authorTwo, retrievedAuthors[1])
-//        assertEquals(authorTree, retrievedAuthors[2])
-//        verify(authorRepository, times(1)).findAll()
-//
-//    }
-
     @Test
     fun `When getallAuthor return list authores`() {
         val author: Author = Author(
-            1L,
-            "Luciano",
-            "luciano@lucianos.com",
-            "Autor experiente"
+                1L,
+                "Luciano",
+                "luciano@lucianos.com",
+                "Autor experiente"
         )
         val authorTwo: Author = Author(
-            2L,
-            "Maria",
-            "maria@lucianos.com",
-            "Autora experiente"
+                2L,
+                "Maria",
+                "maria@lucianos.com",
+                "Autora experiente"
         )
         val authorTree = Author(
-            3L,
-            "Luciano",
-            "luciano@lucianos.com",
-            "Autor experiente"
+                3L,
+                "Luciano",
+                "luciano@lucianos.com",
+                "Autor experiente"
         )
 
         `when`(authorRepository.findAll()).thenReturn(listOf(author, authorTwo, authorTree))
@@ -153,6 +89,45 @@ class AuthorServiceImplTest {
 //        assertEquals(authorTree, retrievedAuthors[2])
 
         verify(authorRepository, times(1)).findAll()
+    }
+
+    @Test
+    fun `when get author with id then return one author`() {
+        // Cria um autor diretamente no repositório
+        val author: Author = authorObject()
+
+        // Configura o comportamento do mock para retornar o autor criado
+        `when`(authorRepository.findById(author.idAuthor!!)).thenReturn(Optional.of(author))
+
+        // Obtém o autor pelo ID
+        val retrievedAuthor = authorRepository.findById(author.idAuthor!!).orElse(null)
+
+        // Verifica se o método findById foi chamado no mock
+        verify(authorRepository).findById(author.idAuthor!!)
+
+        // Verifica se o autor retornado é igual ao autor criado
+        assertEquals(author, retrievedAuthor)
+    }
+
+    @Test
+    fun `delete by id`() {
+        val author: Author = authorObject()
+
+        // Salva o autor no repositório
+        authorRepository.save(author)
+
+        // Configura o comportamento do mock para excluir o autor quando o método deleteById é chamado
+        `when`(authorRepository.deleteById(author.idAuthor!!)).then { }
+
+        // Chama o método de exclusão
+        authorRepository.deleteById(author.idAuthor!!)
+
+        // Verifica se o método deleteById foi chamado no mock
+        verify(authorRepository, times(1)).deleteById(author.idAuthor!!)
+
+        // Verifica se o autor não existe mais no repositório
+        val deletedAuthor = authorRepository.findById(author.idAuthor!!).orElse(null)
+        assertNull(deletedAuthor, "O autor deveria ter sido excluído.")
     }
 
 }
