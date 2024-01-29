@@ -1,7 +1,7 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Client
+import com.luciano.cadastropessoa.cadastrarpessoa.model.ClientUser
 import com.luciano.cadastropessoa.cadastrarpessoa.model.StateUF
 import jakarta.validation.constraints.NotBlank
 import org.jetbrains.annotations.NotNull
@@ -27,9 +27,9 @@ data class CreateAddressDTO(
         @field:NotNull("O nome não pode ser nulo")
         val complement: String,
         val stateId: Long?,
-        val idClient: Long?
+        val clientId: Long?
 ) {
-    fun toEntity(stateUF: StateUF, client: Client) = Address(
+    fun toEntity(stateUF: StateUF, client: ClientUser) = Address(
             cep = this.cep,
             road = this.road,
             city = this.city,
@@ -38,7 +38,6 @@ data class CreateAddressDTO(
             state = stateUF,
             client = client
     )
-
     companion object {
         fun fromEntity(address: Address) = CreateAddressDTO(
                 cep = address.cep,
@@ -47,7 +46,7 @@ data class CreateAddressDTO(
                 numberResidence = address.numberResidence,
                 complement = address.complement,
                 stateId = address.state.idState,
-                idClient = address.client.idClient
+                clientId = address.client.idClient
         )
     }
 }

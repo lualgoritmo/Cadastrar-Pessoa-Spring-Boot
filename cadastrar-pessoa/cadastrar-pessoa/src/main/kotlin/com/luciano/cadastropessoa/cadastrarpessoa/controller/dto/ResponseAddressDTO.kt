@@ -1,9 +1,8 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Client
+import com.luciano.cadastropessoa.cadastrarpessoa.model.ClientUser
 import com.luciano.cadastropessoa.cadastrarpessoa.model.StateUF
-import java.util.StringJoiner
 
 class ResponseAddressDTO(
         val cep: String,
@@ -13,7 +12,7 @@ class ResponseAddressDTO(
         val complement: String,
         val state: String
 ) {
-    fun toEntity(state: StateUF, client: Client) = Address(
+    fun toEntity(state: StateUF, client: ClientUser) = Address(
             cep = this.cep,
             road = this.road,
             city = this.city,
@@ -24,13 +23,7 @@ class ResponseAddressDTO(
     )
 
     companion object {
-        private val processedCountries: MutableMap<String, CountryDTO> = mutableMapOf()
         fun fromToEntity(address: Address): ResponseAddressDTO {
-            //val countryName = address.state.country.name
-            //val state = ResponseStateDTO(name = address.state.name)
-//            val countryDTO = processedCountries.computeIfAbsent(countryName) {
-//                CountryDTO(countryName)
-//            }
 
             return ResponseAddressDTO(
                     cep = address.cep,

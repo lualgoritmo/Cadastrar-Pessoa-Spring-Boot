@@ -20,5 +20,5 @@ data class Address(
 
         @ManyToOne(fetch = FetchType.EAGER)
         @JoinColumn(name = "client_id")
-        val client: Client,
+        val client: ClientUser,
 )
