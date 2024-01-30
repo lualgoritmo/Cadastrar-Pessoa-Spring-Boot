@@ -30,9 +30,7 @@ class BookServiceImpl(
         }
 
     }
-
     override fun getAllBooks(): List<Book> = bookRepository.findAll()
-
     @Transactional
     override fun getByIdBook(idBook: Long): Book {
         try {
@@ -43,7 +41,6 @@ class BookServiceImpl(
             throw ex
         }
     }
-
     @Transactional
     override fun updateWithBookId(idBook: Long, updateBook: Book): Book {
         val existingBook: Book = bookRepository.findById(idBook).orElseThrow {
@@ -61,7 +58,6 @@ class BookServiceImpl(
         )
         return bookRepository.save(updateBook)
     }
-
     override fun deleteByIdBook(idBook: Long) {
         try {
             return bookRepository.deleteById(idBook)

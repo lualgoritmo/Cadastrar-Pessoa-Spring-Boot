@@ -84,8 +84,10 @@ class CountryServiceImplTest {
                 idCountry = 1,
                 name = "Alemanhã"
         )
+
         `when`(countryRepository.findById(existingCountry.idCountry!!)).thenReturn(Optional.of(existingCountry))
         `when`(countryRepository.save(updateCountry)).thenReturn(updateCountry)
+
         val newCountry = countryServiceImpl.updateWithIdCountry(existingCountry.idCountry!!, updateCountry)
 
         assertThat(newCountry).isNotNull
