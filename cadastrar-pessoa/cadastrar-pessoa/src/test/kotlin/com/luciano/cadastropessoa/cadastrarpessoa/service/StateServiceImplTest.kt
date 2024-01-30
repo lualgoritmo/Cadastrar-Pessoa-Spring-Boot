@@ -7,7 +7,6 @@ import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.StateServiceImpl
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
@@ -23,16 +22,11 @@ class StateServiceImplTest {
     @Mock
     private lateinit var stateRepository: StateRepository
 
-    @BeforeEach
-    fun setUP() {
-        stateServiceImpl = StateServiceImpl(stateRepository)
-    }
-
     private fun countryObject() = Country(idCountry = 1, "Brasil")
     private fun stateObject() = StateUF(idState = 1, name = "SP", country = countryObject())
 
     @Test
-    fun `when the createState method is called it must return a state`() {
+    fun `when the createState method is called, it must return a state`() {
         val state = stateObject()
 
         `when`(stateRepository.save(state)).thenReturn(state)
@@ -42,12 +36,11 @@ class StateServiceImplTest {
         assertThat(saveState).isEqualTo(state)
         assertThat(saveState).isNotNull
 
-        // Verifica se o método save foi chamado no mock stateRepository
         verify(stateRepository, times(1)).save(saveState)
     }
 
     @Test
-    fun `when the getAllState method is called, retur list State`() {
+    fun `when the getAllState method is called, return list State`() {
 
         val stateUF: StateUF = StateUF(
                 1L,
@@ -76,64 +69,52 @@ class StateServiceImplTest {
     }
 
     @Test
-    fun `when the getStateById method is called it must return a specific state`() {
+    fun `when the getStateById method is called, it must return a specific state`() {
         val state = stateObject()
 
         `when`(stateRepository.findById(state.idState!!)).thenReturn(Optional.of(state))
 
-        // Obtém o estado pelo ID
-        val testState = stateServiceImpl.getStateById(state.idState!!)
+        val stateReturn = stateServiceImpl.getStateById(state.idState!!)
 
-        // Extrai o valor do Optional retornado pelo repositório
-        val retrievedState = stateRepository.findById(state.idState!!).orElse(null)
-
-        // Verifica se o estado retornado é igual ao estado recuperado do repositório
-        assertThat(testState).isEqualTo(retrievedState)
-        // Verifica se o estado retornado não é nulo
-        assertThat(testState).isNotNull
-        // Verifica se o estado recuperado não é nulo
-        assertThat(retrievedState).isNotNull
-        // Verifica se o estado recuperado é igual ao estado original
-        assertThat(retrievedState).isEqualTo(state)
+        assertThat(state).isEqualTo(stateReturn)
+        assertThat(stateReturn).isNotNull
+        assertThat(state).isNotNull
+        assertThat(stateReturn).isEqualTo(state)
+        verify(stateRepository, times(1)).findById(state.idState!!)
     }
-
     @Test
     fun `when updateWithIdState is called, it should update the state successfully`() {
-        // Dados de exemplo
         val existingState = StateUF(
                 1L,
                 "SP",
-                Country(1L, "Brazil")
+                Country(1L, "Brasil")
         )
+
         val updateState = StateUF(
                 1L,
                 "Updated State",
-                Country(1L, "Brazil")
+                Country(1L, "Brasil")
         )
 
-        // Configuração do mock para simular o estado existente no repositório
-        `when`(stateRepository.findById(1L)).thenReturn(Optional.of(existingState))
+        `when`(stateRepository.findById(existingState.idState!!)).thenReturn(Optional.of(existingState))
 
-        // Configuração do mock para simular o salvamento do estado atualizado
         `when`(stateRepository.save(updateState)).thenReturn(updateState)
 
-        // Chamada ao método que está sendo testado
-        val updatedState = stateServiceImpl.updateWithIdState(1L, updateState)
+        val newState = stateServiceImpl.updateWithIdState(existingState.idState!!, updateState)
 
-        // Verificações
-        assertEquals(updateState, updatedState, "O estado atualizado deve ser igual ao esperado")
-
-        // Verifica se o método findById foi chamado corretamente no mock
-        verify(stateRepository).findById(1L)
-
-        // Verifica se o método save foi chamado corretamente no mock
-        verify(stateRepository).save(updateState)
+        assertThat(existingState).isNotNull
+        assertThat(updateState).isNotNull
+        assertThat(newState).isEqualTo(updateState)
+        assertThat(newState.name).isEqualTo("Updated State")
+        assertThat(newState.country.name).isEqualTo("Brasil")
+        verify(stateRepository, times(1)).findById(1L)
+        verify(stateRepository, times(1)).save(updateState)
     }
 
-    @Test
-    fun `deleted with id`() {
-        val stateUF = stateObject()
 
+    @Test
+    fun `when executing deleteWithIdState, it returns nothing`() {
+        val stateUF = stateObject()
         stateRepository.save(stateUF)
 
         `when`(stateRepository.deleteById(stateUF.idState!!)).then { }
