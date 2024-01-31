@@ -49,7 +49,8 @@ class ClientServiceImpl(private val clientRepository: ClientRepository) : Client
                 email = client.email,
                 name = client.name,
                 surname = client.surname,
-                document = client.document
+                document = client.document,
+                phone = client.phone
         )
         return clientRepository.save(updateClient)
     }

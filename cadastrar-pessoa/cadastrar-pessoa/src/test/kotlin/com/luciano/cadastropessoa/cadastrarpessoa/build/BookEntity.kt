@@ -1,6 +1,7 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.build
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateBookDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
@@ -14,8 +15,7 @@ data class BookEntity(
         val price: Double = 20.0,
         val datePost: String = "10/10/2022",
         val authorId: Author,
-        val categoryId: Category
-) {
+        val categoryId: Category) {
 
     fun build() = Book(
             idBook = idBook,

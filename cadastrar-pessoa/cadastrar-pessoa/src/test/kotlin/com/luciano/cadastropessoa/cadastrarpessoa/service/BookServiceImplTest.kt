@@ -52,7 +52,6 @@ class BookServiceImplTest {
         verify(categoryServiceImpl, times(1)).getByIdCategory(category.idCategory!!)
         verify(bookRepository, times(1)).save(any())
     }
-
     @Test
     fun `when getAllBooks is called, it should return a list of books`() {
         `when`(bookRepository.findAll()).thenReturn(returnListBooks())
@@ -63,7 +62,6 @@ class BookServiceImplTest {
 
         verify(bookRepository, times(1)).findAll()
     }
-
     @Test
     fun `when getByIdBook is called, it should return one book`() {
         val book = BookEntity(authorId = AuthorEntity().build(), categoryId = CategoryEntity().build())
@@ -76,7 +74,6 @@ class BookServiceImplTest {
 
         verify(bookRepository, times(1)).findById(1)
     }
-
     @Test
     fun `when updateBook is called, it should return new book`() {
         val author = AuthorEntity().build()
@@ -102,14 +99,13 @@ class BookServiceImplTest {
         }
 
         val newBook = bookServiceImpl.updateWithBookId(existingBook.idBook!!, updateBook)
+
         assertThat(newBook).isInstanceOf(Book::class.java)
         assertThat(newBook).isEqualTo(updateBook)
 
         verify(bookRepository, times(1)).findById(existingBook.idBook!!)
         verify(bookRepository, times(1)).save(any())
     }
-
-
     @Test
     fun `when deleteByIdBook is called, it should return any`() {
         val author = AuthorEntity().build()
@@ -169,5 +165,3 @@ class BookServiceImplTest {
         )
     }
 }
-
-
