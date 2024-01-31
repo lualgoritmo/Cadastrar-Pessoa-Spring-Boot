@@ -69,7 +69,7 @@ class ClientServiceImplTest {
                 phone = "14-9-9999-9999"
         )
         `when`(clientRepository.findById(existingClient.idClient!!)).thenReturn(Optional.of(existingClient))
-        `when`(clientRepository.save(any())).thenAnswer { invocation ->
+        `when`(clientRepository.save(any(ClientUser::class.java))).thenAnswer { invocation ->
             val savedClient = invocation.arguments[0] as ClientUser
             return@thenAnswer savedClient
         }
