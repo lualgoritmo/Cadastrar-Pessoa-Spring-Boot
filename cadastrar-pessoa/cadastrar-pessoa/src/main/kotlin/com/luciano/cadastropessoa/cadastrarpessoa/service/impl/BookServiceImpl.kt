@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service
 
 @Service
 class BookServiceImpl(
-    private val bookRepository: BookRepository,
-    private val authorService: AuthorService,
-    private val categoryService: CategoryService
+        private val bookRepository: BookRepository,
+        private val authorService: AuthorService,
+        private val categoryService: CategoryService
 ) : BookService {
     @Transactional
     override fun createBook(bookDTO: CreateBookDTO): Book {

@@ -30,4 +30,9 @@ class AddressController(private val addressService: AddressService) {
         return listAddress.map { ResponseAddressDTO.fromToEntity(it) }.toList()
     }
 
+    @DeleteMapping("/{idAddress}/deleteAddress")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun getByIdToDeleteAuthor(@PathVariable idAddress: Long) =
+            addressService.deleteWithIdAddress(idAddress = idAddress)
+
 }

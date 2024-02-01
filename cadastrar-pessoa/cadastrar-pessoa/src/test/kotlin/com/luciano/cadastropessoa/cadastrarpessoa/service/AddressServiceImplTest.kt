@@ -9,11 +9,13 @@ import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.AddressServiceImp
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.ClientServiceImpl
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.StateServiceImpl
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.springframework.boot.test.context.SpringBootTest
+import java.util.*
 
 @SpringBootTest
 class AddressServiceImplTest {
@@ -49,4 +51,62 @@ class AddressServiceImplTest {
         verify(addressRepository, times(1)).save(any())
     }
 
+    @Test
+    fun `when getAllAdress is called, it should list address`() {
+        val client = ClientUserEntity().build()
+        val state = StateEntity().build()
+
+        val listAddress: List<AddressUser> = listOf(
+                AddressEntity(client = client, state = state).build(),
+                AddressEntity(client = client, state = state).build(),
+                AddressEntity(client = client, state = state).build()
+        )
+
+        `when`(addressRepository.findAll()).thenReturn(listAddress)
+        val getList = addressServiceImpl.getAllAddress()
+
+        assertThat(getList).isNotNull.isNotEmpty
+        assertThat(getList.size).isEqualTo(listAddress.size)
+        for (i in getList.indices) {
+            assertThat(getList[i]).isEqualToComparingFieldByField(listAddress[i])
+        }
+        verify(addressRepository, times(1)).findAll()
+    }
+
+    @Test
+    fun `when getByIdAddress is called, it should address`() {
+
+        val client = ClientUserEntity().build()
+        val state = StateEntity().build()
+        val address: AddressUser = AddressEntity(client = client, state = state).build()
+
+        addressRepository.save(address)
+
+        `when`(addressRepository.findById(address.idAddress!!)).thenReturn(Optional.of(address))
+
+        val addressId = addressServiceImpl.getByIdAddress(idAddress = address.idAddress!!)
+        assertThat(addressId).isNotNull
+
+        verify(addressRepository, times(1)).findById(addressId.idAddress!!)
+    }
+
+    @Test
+    fun `when deleteWithIdAddress is called, it should any`() {
+        val client = ClientUserEntity().build()
+        val state = StateEntity().build()
+        val addressEntity = AddressEntity(client = client, state = state).build()
+
+        addressRepository.save(addressEntity)
+
+        `when`(addressRepository.deleteById(addressEntity.idAddress!!)).then { }
+
+        addressServiceImpl.deleteWithIdAddress(idAddress = addressEntity.idAddress!!)
+
+        val deletedAddress = addressRepository.findById(addressEntity.idAddress!!).orElse(null)
+
+        assertNull(deletedAddress, "esse idAddress não deveria existir")
+        assertThat(deletedAddress).isEqualTo(null)
+
+        verify(addressRepository, times(1)).deleteById(addressEntity.idAddress!!)
+    }
 }

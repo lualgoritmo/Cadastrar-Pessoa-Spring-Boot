@@ -2,12 +2,14 @@ package com.luciano.cadastropessoa.cadastrarpessoa.service.impl
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateAddressDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.AddressCardNotFoundException
+import com.luciano.cadastropessoa.cadastrarpessoa.exception.AuthorNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.AddressUser
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.AddressRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.AddressService
 import com.luciano.cadastropessoa.cadastrarpessoa.service.ClientService
 import com.luciano.cadastropessoa.cadastrarpessoa.service.StateService
 import jakarta.transaction.Transactional
+import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.stereotype.Service
 import kotlin.jvm.optionals.getOrElse
 
@@ -38,6 +40,10 @@ class AddressServiceImpl(
     }
 
     override fun deleteWithIdAddress(idAddress: Long) {
-        TODO("Not yet implemented")
+        try {
+            addressRepository.deleteById(idAddress)
+        } catch (ex: EmptyResultDataAccessException) {
+            throw AuthorNotFoundException(idAddress)
+        }
     }
 }

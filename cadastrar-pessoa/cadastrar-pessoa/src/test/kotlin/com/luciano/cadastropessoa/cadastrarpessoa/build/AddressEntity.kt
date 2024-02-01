@@ -16,14 +16,14 @@ data class AddressEntity(
         val client: ClientUser
 ) {
     fun build() = AddressUser(
-            idAddress = this.idAddress,
-            cep = this.cep,
-            road = this.road,
-            city = this.city,
-            numberResidence = this.numberResidence,
-            complement = this.complement,
-            state = this.state,
-            client = this.client
+            idAddress = idAddress,
+            cep = cep,
+            road = road,
+            city = city,
+            numberResidence = numberResidence,
+            complement = complement,
+            state = state,
+            client = client
     )
 
     companion object {
