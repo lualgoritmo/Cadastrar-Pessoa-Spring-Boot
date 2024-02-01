@@ -1,6 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
+import com.luciano.cadastropessoa.cadastrarpessoa.model.AddressUser
 import com.luciano.cadastropessoa.cadastrarpessoa.model.ClientUser
 import com.luciano.cadastropessoa.cadastrarpessoa.model.StateUF
 import jakarta.validation.constraints.NotBlank
@@ -29,7 +29,7 @@ data class CreateAddressDTO(
         val stateId: Long?,
         val clientId: Long?
 ) {
-    fun toEntity(stateUF: StateUF, client: ClientUser) = Address(
+    fun toEntity(stateUF: StateUF, client: ClientUser) = AddressUser(
             cep = this.cep,
             road = this.road,
             city = this.city,
@@ -39,7 +39,7 @@ data class CreateAddressDTO(
             client = client
     )
     companion object {
-        fun fromEntity(address: Address) = CreateAddressDTO(
+        fun fromEntity(address: AddressUser) = CreateAddressDTO(
                 cep = address.cep,
                 road = address.road,
                 city = address.city,

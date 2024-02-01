@@ -19,6 +19,6 @@ data class ClientUser(
 
         @OneToMany(mappedBy = "client", cascade = [CascadeType.ALL])
         @JsonBackReference
-        val addresses: List<Address> = emptyList()
+        val addresses: List<AddressUser> = emptyList()
 
 )

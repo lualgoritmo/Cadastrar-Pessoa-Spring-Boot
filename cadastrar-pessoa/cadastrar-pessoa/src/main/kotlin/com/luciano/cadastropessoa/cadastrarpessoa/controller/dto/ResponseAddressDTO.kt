@@ -1,6 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
+import com.luciano.cadastropessoa.cadastrarpessoa.model.AddressUser
 import com.luciano.cadastropessoa.cadastrarpessoa.model.ClientUser
 import com.luciano.cadastropessoa.cadastrarpessoa.model.StateUF
 
@@ -12,7 +12,7 @@ class ResponseAddressDTO(
         val complement: String,
         val state: String
 ) {
-    fun toEntity(state: StateUF, client: ClientUser) = Address(
+    fun toEntity(state: StateUF, client: ClientUser) = AddressUser(
             cep = this.cep,
             road = this.road,
             city = this.city,
@@ -23,7 +23,7 @@ class ResponseAddressDTO(
     )
 
     companion object {
-        fun fromToEntity(address: Address): ResponseAddressDTO {
+        fun fromToEntity(address: AddressUser): ResponseAddressDTO {
 
             return ResponseAddressDTO(
                     cep = address.cep,

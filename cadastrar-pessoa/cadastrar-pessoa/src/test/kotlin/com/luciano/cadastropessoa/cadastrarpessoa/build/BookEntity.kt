@@ -1,7 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.build
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateBookDTO
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Category

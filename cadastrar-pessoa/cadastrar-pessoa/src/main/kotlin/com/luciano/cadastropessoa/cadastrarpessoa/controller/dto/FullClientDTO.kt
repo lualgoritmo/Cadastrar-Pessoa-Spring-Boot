@@ -1,6 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
+import com.luciano.cadastropessoa.cadastrarpessoa.model.AddressUser
 import com.luciano.cadastropessoa.cadastrarpessoa.model.ClientUser
 
 class FullClientDTO(
@@ -14,7 +14,7 @@ class FullClientDTO(
         val address: AddressResponseDTO
 ) {
     companion object {
-        fun fromEntity(client: ClientUser, address: Address, responseAddressDTO: AddressResponseDTO) = FullClientDTO(
+        fun fromEntity(client: ClientUser, address: AddressUser, responseAddressDTO: AddressResponseDTO) = FullClientDTO(
                 email = client.email,
                 name = client.name,
                 surname = client.surname,

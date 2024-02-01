@@ -2,7 +2,7 @@ package com.luciano.cadastropessoa.cadastrarpessoa.service.impl
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateAddressDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.AddressCardNotFoundException
-import com.luciano.cadastropessoa.cadastrarpessoa.model.Address
+import com.luciano.cadastropessoa.cadastrarpessoa.model.AddressUser
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.AddressRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.AddressService
 import com.luciano.cadastropessoa.cadastrarpessoa.service.ClientService
@@ -18,22 +18,22 @@ class AddressServiceImpl(
         private val clientService: ClientService
 ) : AddressService {
     @Transactional
-    override fun createAddress(createAddressDTO: CreateAddressDTO): Address {
+    override fun createAddress(createAddressDTO: CreateAddressDTO): AddressUser {
         val client = clientService.getByIdClient(createAddressDTO.clientId!!)
         val state = stateService.getStateById(createAddressDTO.stateId!!)
 
-        val address: Address = createAddressDTO.toEntity(stateUF = state, client = client)
+        val address: AddressUser = createAddressDTO.toEntity(stateUF = state, client = client)
         return addressRepository.save(address)
     }
 
-    override fun getAllAddress(): List<Address> = addressRepository.findAll()
-    override fun getByIdAddress(idAddress: Long): Address {
+    override fun getAllAddress(): List<AddressUser> = addressRepository.findAll()
+    override fun getByIdAddress(idAddress: Long): AddressUser {
         return addressRepository.findById(idAddress).getOrElse {
             throw AddressCardNotFoundException(idAddress)
         }
     }
 
-    override fun updateAddress(idAddress: Long, address: Address): Address {
+    override fun updateAddress(idAddress: Long, address: AddressUser): AddressUser {
         TODO("Not yet implemented")
     }
 
