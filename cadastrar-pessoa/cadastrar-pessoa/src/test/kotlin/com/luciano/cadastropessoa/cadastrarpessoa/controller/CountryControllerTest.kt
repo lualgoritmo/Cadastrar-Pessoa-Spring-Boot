@@ -12,7 +12,6 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.kotlin.given
-import org.mockito.kotlin.willAnswer
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -38,20 +37,18 @@ class CountryControllerTest {
     private lateinit var mockMvc: MockMvc
     @Autowired
     private lateinit var objectMapper: ObjectMapper
-
     @BeforeEach
     fun setUp() {
         countryRepository.deleteAll()
         Mockito.reset(countryServiceImpl)
     }
-
     @Test
     fun `when createCountry is called, it should return country`() {
         val country = CountryEntity().build()
 
         given(countryServiceImpl.createCountrie(country)).willReturn(country)
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/countrys")
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/countries")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(country)))
                 .andExpect(MockMvcResultMatchers.status().isCreated)
@@ -63,14 +60,13 @@ class CountryControllerTest {
         countryRepository.save(country)
 
         given(countryServiceImpl.getWithIdCountry(country.idCountry!!)).willReturn(country)
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/countrys/{idCountry}", country.idCountry)
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/countries/{idCountry}", country.idCountry)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(country)))
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(jsonPath("$.name", Matchers.equalTo(country.name)))
 
     }
-
     @Test
     fun`when getAllCountries is called, it should return list countries`() {
         val countries: List<Country> = listOf(
@@ -82,7 +78,7 @@ class CountryControllerTest {
 
         given(countryServiceImpl.getAllCountries()).willReturn(countries)
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/countrys")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/countries")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(countries)))
                 .andExpect(MockMvcResultMatchers.status().isOk)
@@ -90,14 +86,33 @@ class CountryControllerTest {
                 .andExpect(jsonPath("$[0].name", Matchers.equalTo(countries[0].name)))
     }
     @Test
+    fun`when updateWithIdCountry is called, it should return new country`() {
+        val country = CountryEntity().build()
+        println("Country default: $country")
+        countryRepository.save(country)
+
+        val updateCountry = CountryEntity(1, "Novo Nome Country")
+        given(countryServiceImpl.updateWithIdCountry(idCountry = country.idCountry!!,
+                updateCountry = updateCountry.build())).willReturn(updateCountry.build())
+        println("Novo country: $updateCountry")
+
+        given(countryServiceImpl.deleteWithIdContry(country.idCountry!!)).willAnswer {  }
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/countries/{idCountry}", country.idCountry)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(updateCountry)))
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andExpect(jsonPath("$.name").value(updateCountry.name))
+    }
+    @Test
     fun`when deleteWithIdContry is called, it should return anything`() {
         val country = CountryEntity().build()
         countryRepository.save(country)
 
         given(countryServiceImpl.deleteWithIdContry(country.idCountry!!)).willAnswer {  }
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/countrys/{idCountry}", country.idCountry)
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/countries/{idCountry}", country.idCountry)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(country)))
                 .andExpect(MockMvcResultMatchers.status().isNoContent)
     }
+
 }

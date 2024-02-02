@@ -11,7 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/countrys")
+@RequestMapping("/api/countries")
 class CountryController(private val countryServiceImpl: CountryService) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
