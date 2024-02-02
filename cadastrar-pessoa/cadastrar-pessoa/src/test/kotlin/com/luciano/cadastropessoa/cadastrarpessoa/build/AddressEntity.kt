@@ -26,6 +26,11 @@ data class AddressEntity(
             client = client
     )
 
+    fun createWithDefaultValues(): AddressEntity {
+        val client = ClientUserEntity().build()
+        val state = StateEntity().build()
+        return AddressEntity(client = client, state = state)
+    }
     companion object {
         fun fromEntity(addressUser: AddressUser) = CreateAddressDTO(
                 cep = addressUser.cep,

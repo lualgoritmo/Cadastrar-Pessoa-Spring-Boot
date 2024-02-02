@@ -1,4 +1,3 @@
-package com.luciano.cadastropessoa.cadastrarpessoa.controller
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateAddressDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.ResponseAddressDTO

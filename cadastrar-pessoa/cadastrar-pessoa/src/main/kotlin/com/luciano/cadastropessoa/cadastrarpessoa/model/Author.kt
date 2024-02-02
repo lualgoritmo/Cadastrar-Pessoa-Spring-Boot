@@ -18,12 +18,13 @@ data class Author(
 
     @field:NotBlank(message = "O e-mail não pode estar em branco")
     @field:Size(max = 200, message = "O nome da categoria não pode estar em branco")
-    @field:Email(message = "O e-mail deve ser válido") val email: String,
+    @field:Email(message = "O e-mail deve ser válido")
+    val email: String,
     @field:NotBlank(message = "A descrição não pode estar em branco")
     @field:Size(max = 400, message = "A descrição deve ter no máximo 400 caracteres")
     val description: String,
 
-    @OneToMany(mappedBy = "authorId", cascade = [CascadeType.ALL])
+    @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL])
     @JsonBackReference
     val books: List<Book> = emptyList()
 )

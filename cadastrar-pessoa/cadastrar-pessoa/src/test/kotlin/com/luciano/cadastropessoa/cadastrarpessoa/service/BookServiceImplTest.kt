@@ -45,7 +45,7 @@ class BookServiceImplTest {
 
         assertThat(savedBook).isInstanceOf(Book::class.java)
         assertThat(savedBook).isNotNull
-        assertThat(savedBook.authorId.idAuthor).isEqualTo(bookEntity.idBook)
+        assertThat(savedBook.author.idAuthor).isEqualTo(bookEntity.idBook)
 
         verify(authorServiceImpl, times(1)).getByIdAuthor(author.idAuthor!!)
         verify(categoryServiceImpl, times(1)).getByIdCategory(category.idCategory!!)
@@ -90,7 +90,7 @@ class BookServiceImplTest {
                 summary = null,
                 price = 50.0,
                 datePost = "01/01/2018",
-                authorId = author,
+                author = author,
                 categoryId = category
         )
 
@@ -140,7 +140,7 @@ class BookServiceImplTest {
                         summary = null,
                         price = 20.0,
                         datePost = "10/10/2020",
-                        authorId = author.build(),
+                        author = author.build(),
                         categoryId = category.build()
                 ),
                 Book(
@@ -151,7 +151,7 @@ class BookServiceImplTest {
                         summary = null,
                         price = 20.0,
                         datePost = "10/10/2020",
-                        authorId = author.build(),
+                        author = author.build(),
                         categoryId = category.build()
                 ),
                 Book(
@@ -162,7 +162,7 @@ class BookServiceImplTest {
                         summary = null,
                         price = 20.0,
                         datePost = "10/10/2020",
-                        authorId = author.build(),
+                        author = author.build(),
                         categoryId = category.build()
                 )
         )

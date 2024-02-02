@@ -22,6 +22,7 @@ class AuthorController(private val authorService: AuthorService) {
     @ResponseStatus(HttpStatus.OK)
     fun getAllAuthor(): List<RequestAuthorDTO> {
         val authorList: List<Author> = authorService.getAllAuthor()
+        println(authorList)
 
         if (authorList.isEmpty()) {
             println("Lista vazia no getAllPerson do controller")

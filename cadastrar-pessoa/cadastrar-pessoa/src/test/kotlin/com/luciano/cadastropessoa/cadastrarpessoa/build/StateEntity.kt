@@ -9,8 +9,8 @@ data class StateEntity(
         val country: Country = CountryEntity().build()
 ) {
     fun build() = StateUF(
-            idState = this.idState,
-            name = this.name,
+            idState = idState,
+            name = name,
             country = country
     )
 }

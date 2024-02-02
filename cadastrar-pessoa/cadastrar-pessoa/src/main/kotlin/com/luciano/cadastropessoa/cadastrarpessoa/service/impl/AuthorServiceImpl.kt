@@ -15,6 +15,7 @@ class AuthorServiceImpl(
     @Transactional
     override fun createAuthor(author: Author): Author =
         authorRepository.save(author)
+    @Transactional
     override fun getAllAuthor(): List<Author> = authorRepository.findAll()
     @Transactional
     override fun getByIdAuthor(idAuthor: Long): Author = authorRepository.findById(idAuthor)

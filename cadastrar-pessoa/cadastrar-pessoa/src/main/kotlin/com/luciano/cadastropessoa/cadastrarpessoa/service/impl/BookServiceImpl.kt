@@ -54,7 +54,7 @@ class BookServiceImpl(
             resume = updateBook.resume,
             price = updateBook.price,
             datePost = updateBook.datePost,
-            authorId = updateBook.authorId
+            author = updateBook.author
         )
         return bookRepository.save(updateBook)
     }

@@ -40,7 +40,7 @@ data class CreateBookDTO(
             summary = this.summary,
             price = this.price,
             datePost = this.datePost,
-            authorId = author,
+            author = author,
             categoryId = category
         )
 
@@ -52,7 +52,7 @@ data class CreateBookDTO(
             summary = book.summary,
             price = book.price,
             datePost = book.datePost,
-            authorId = book.authorId.idAuthor,
+            authorId = book.author.idAuthor,
             categoryId = book.categoryId.idCategory
         )
     }

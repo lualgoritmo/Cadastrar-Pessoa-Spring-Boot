@@ -27,7 +27,6 @@ class AddressServiceImpl(
         val address: AddressUser = createAddressDTO.toEntity(stateUF = state, client = client)
         return addressRepository.save(address)
     }
-
     override fun getAllAddress(): List<AddressUser> = addressRepository.findAll()
     override fun getByIdAddress(idAddress: Long): AddressUser {
         return addressRepository.findById(idAddress).getOrElse {

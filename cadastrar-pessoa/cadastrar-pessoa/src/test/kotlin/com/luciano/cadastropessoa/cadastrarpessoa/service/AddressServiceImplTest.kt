@@ -30,7 +30,6 @@ class AddressServiceImplTest {
 
     @Mock
     private lateinit var stateServiceImpl: StateServiceImpl
-
     @Test
     fun `when createAddress is called, it must save address`() {
         val client = ClientUserEntity().build()
@@ -67,6 +66,7 @@ class AddressServiceImplTest {
 
         assertThat(getList).isNotNull.isNotEmpty
         assertThat(getList.size).isEqualTo(listAddress.size)
+        assertThat(getList.size < 2).isEqualTo(false)
         for (i in getList.indices) {
             assertThat(getList[i]).isEqualToComparingFieldByField(listAddress[i])
         }

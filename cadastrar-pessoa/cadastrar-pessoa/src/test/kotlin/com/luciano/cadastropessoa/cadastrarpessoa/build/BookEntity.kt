@@ -24,7 +24,7 @@ data class BookEntity(
             summary = null,
             price = price,
             datePost = datePost,
-            authorId = authorId,
+            author = authorId,
             categoryId = categoryId
     )
 

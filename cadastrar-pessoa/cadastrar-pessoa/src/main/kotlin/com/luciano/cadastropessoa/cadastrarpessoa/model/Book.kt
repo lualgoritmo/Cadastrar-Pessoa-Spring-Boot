@@ -35,8 +35,8 @@ data class Book(
         val datePost: String,
 
         @ManyToOne(cascade = [CascadeType.ALL])
-        @JoinColumn(name = "author_id")
-        val authorId: Author,
+        @JoinColumn(name = "author")
+        val author: Author,
 
         @ManyToOne(cascade = [CascadeType.ALL])
         @JoinColumn(name = "category_id")

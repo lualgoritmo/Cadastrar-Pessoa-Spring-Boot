@@ -14,12 +14,12 @@ data class ClientUserEntity(
 
 ) {
     fun build() = ClientUser(
-            idClient = this.idClient,
-            email = this.email,
-            name = this.name,
-            surname = this.surname,
-            document = this.document,
-            phone = this.phone,
+            idClient = idClient,
+            email = email,
+            name = name,
+            surname = surname,
+            document = document,
+            phone = phone,
             addresses = address
     )
 }
