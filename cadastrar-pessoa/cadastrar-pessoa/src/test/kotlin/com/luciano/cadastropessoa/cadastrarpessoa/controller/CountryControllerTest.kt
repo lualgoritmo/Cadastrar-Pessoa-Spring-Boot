@@ -96,7 +96,7 @@ class CountryControllerTest {
                 updateCountry = updateCountry.build())).willReturn(updateCountry.build())
         println("Novo country: $updateCountry")
 
-        given(countryServiceImpl.deleteWithIdContry(country.idCountry!!)).willAnswer {  }
+        //given(countryServiceImpl.deleteWithIdContry(country.idCountry!!)).willAnswer {  }
         mockMvc.perform(MockMvcRequestBuilders.put("/api/countries/{idCountry}", country.idCountry)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(updateCountry)))

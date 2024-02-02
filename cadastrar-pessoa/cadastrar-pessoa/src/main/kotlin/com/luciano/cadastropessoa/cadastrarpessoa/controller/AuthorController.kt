@@ -43,8 +43,8 @@ class AuthorController(private val authorService: AuthorService) {
         }
     }
 
-    @PutMapping("/{idAuthor}/updates")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("/{idAuthor}")
+    @ResponseStatus(HttpStatus.OK)
     fun updateAuthorWitchId(
         @PathVariable idAuthor: Long, @RequestBody @Valid updateAuthorDTO: UpdateAuthorDTO
     ): UpdateAuthorDTO {
