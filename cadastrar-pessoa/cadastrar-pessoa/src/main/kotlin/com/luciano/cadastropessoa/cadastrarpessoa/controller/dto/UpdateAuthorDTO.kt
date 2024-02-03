@@ -8,13 +8,13 @@ import jakarta.validation.constraints.Size
 
 class UpdateAuthorDTO(
     @field:NotBlank(message = "O nome não pode estar em branco")
-    private val name: String,
+     val name: String,
     @field:Email(message = "O e-mail deve ser válido")
-    private val email: String,
+     val email: String,
     @field:NotBlank(message = "A descrição não pode estar em branco")
     @field:Size(max = 255, message = "A descrição deve ter no máximo 255 caracteres")
-    private val description: String,
-    private val book: List<Book> = emptyList()
+     val description: String,
+     val book: List<Book> = emptyList()
 ) {
     fun toEntity() = Author(
         name = this.name,

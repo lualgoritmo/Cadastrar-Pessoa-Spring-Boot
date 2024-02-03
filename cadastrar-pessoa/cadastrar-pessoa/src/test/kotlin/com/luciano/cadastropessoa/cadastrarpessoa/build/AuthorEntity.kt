@@ -1,6 +1,7 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.build
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.RequestAuthorDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.UpdateAuthorDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 
 data class AuthorEntity(
@@ -16,7 +17,11 @@ data class AuthorEntity(
             email = email,
             description = description
     )
-
+    fun buildUpdate() = UpdateAuthorDTO(
+            name = name,
+            email = email,
+            description = description
+    )
     companion object {
         fun fromEntity(author: AuthorEntity) = RequestAuthorDTO(
                 name = author.name,
@@ -24,4 +29,5 @@ data class AuthorEntity(
                 description = author.description
         )
     }
+
 }
