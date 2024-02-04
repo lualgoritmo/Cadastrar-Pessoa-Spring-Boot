@@ -12,6 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.mockito.kotlin.any
 import org.mockito.kotlin.given
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -82,6 +84,7 @@ class ClientControllerTest {
                 document = "123456789",
                 phone = "27-1234-1234"
         )
+
         given(clientServiceImpl.updateClient(
                 idClient = client.idClient!!,
                 updateClient)

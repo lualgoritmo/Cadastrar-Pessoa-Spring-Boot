@@ -10,12 +10,12 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.BDDMockito
-import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.kotlin.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
@@ -32,7 +32,7 @@ class AuthorControllerTest {
     @Autowired
     private lateinit var authorRepository: AuthorRepository
 
-    @Mock
+    @MockBean
     private lateinit var authorServiceImpl: AuthorServiceImpl
 
     @Autowired
@@ -40,6 +40,7 @@ class AuthorControllerTest {
 
     @Autowired
     private lateinit var objectMapper: ObjectMapper
+
     @BeforeEach
     fun setUp() {
         authorRepository.deleteAll()
@@ -91,7 +92,7 @@ class AuthorControllerTest {
         mockmvc.perform(MockMvcRequestBuilders.get("/api/authors")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk)
-                .andExpect(jsonPath("$.size()", Matchers.equalTo(1)))
+                .andExpect(jsonPath("$.size()", Matchers.equalTo(2)))
                 .andExpect(jsonPath("$[0].name", Matchers.equalTo(listAuthorEntity[0].name)))
                 .andExpect(jsonPath("$[0].email", Matchers.equalTo(listAuthorEntity[0].email)))
 
@@ -122,6 +123,7 @@ class AuthorControllerTest {
                 .andExpect(jsonPath("$.description").value(updateAuthor.toEntity().description))
                 .andDo(MockMvcResultHandlers.print())
     }
+
     @Test
     fun `when getByIdToDeleteAuthor is called, it should remove author`() {
         val author = AuthorEntity().build()
@@ -133,7 +135,8 @@ class AuthorControllerTest {
                 "/api/authors//{idAuthor}/deleteAuthor", author.idAuthor)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNoContent)
-        //verify(authorServiceImpl, times(1)).deleteByIdAuthor(author.idAuthor!!)
+
+        verify(authorServiceImpl, times(1)).deleteByIdAuthor(author.idAuthor!!)
     }
 
 }

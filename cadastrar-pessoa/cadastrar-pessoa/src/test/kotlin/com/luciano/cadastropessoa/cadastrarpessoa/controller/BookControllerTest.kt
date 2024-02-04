@@ -5,9 +5,7 @@ import com.luciano.cadastropessoa.cadastrarpessoa.build.AuthorEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.build.BookEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.build.CategoryEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateBookDTO
-import com.luciano.cadastropessoa.cadastrarpessoa.repository.AuthorRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.BookRepository
-import com.luciano.cadastropessoa.cadastrarpessoa.repository.CategoryRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.BookServiceImpl
 import org.hamcrest.Matchers
 import org.junit.jupiter.api.Test
@@ -65,6 +63,8 @@ class BookControllerTest {
                 .content(objectMapper.writeValueAsString(createBook)))
                 .andExpect(MockMvcResultMatchers.status().isCreated)
                 .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.equalTo(createBook.title)))
+
+        verify(bookServiceImpl, times(1)).createBook(createBook)
     }
 
     @Test
@@ -84,16 +84,49 @@ class BookControllerTest {
 
         verify(bookServiceImpl, times(1)).getByIdBook(book.idBook!!)
     }
+    @Test
+    fun `when updateBook is called, it should updateBookDTO`() {
+        val author = AuthorEntity().build()
+        //val saveAuthor = authorRepository.save(author)
+        val category = CategoryEntity().build()
+        //val saveCategory = categoryRepository.save(category)
+
+        val book = BookEntity(authorId = author, categoryId = category).build()
+
+        bookRepository.save(book)
+
+        val updateBook = BookEntity(
+                idBook = book.idBook!!,
+                title = "Novo Livro Build",
+                isbnBook = "0123456",
+                resume = "Novo Resumo Build",
+                summary = null,
+                price = 30.0,
+                datePost = "11/10/2022",
+                authorId = author,
+                categoryId = category
+        ).build()
+
+        given(bookServiceImpl.updateWithBookId(idBook = book.idBook!!, updateBook)).willReturn(updateBook)
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/books/{idBook}/update", book.idBook)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(updateBook)))
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.equalTo(book.title)))
+
+        verify(bookServiceImpl, times(1)).updateWithBookId(book.idBook!!, updateBook)
+    }
 
     @Test
-    fun`when deleteBookWithId is called, it should return`() {
+    fun `when deleteBookWithId is called, it should return`() {
         val author = AuthorEntity().build()
         val category = CategoryEntity().build()
 
         val book = BookEntity(authorId = author, categoryId = category).build()
         bookRepository.save(book)
 
-        given(bookServiceImpl.deleteByIdBook(any())).will {  }
+        given(bookServiceImpl.deleteByIdBook(any())).will { }
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/api/books/{idBook}/delete", book.idBook)
                 .contentType(MediaType.APPLICATION_JSON))

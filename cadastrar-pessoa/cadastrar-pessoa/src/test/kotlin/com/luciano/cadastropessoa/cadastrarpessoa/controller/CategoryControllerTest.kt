@@ -36,7 +36,6 @@ class CategoryControllerTest {
 
     @Autowired
     private lateinit var categoryRepository: CategoryRepository
-
     @Test
     fun `when createCategory is called, it should return Category`() {
         val category = CategoryEntity()
@@ -71,7 +70,7 @@ class CategoryControllerTest {
     @Test
     fun `when updateCategoryWithId is called, it should return new category`() {
         val category = CategoryEntity().build()
-        //categoryRepository.save(category)
+        categoryRepository.save(category)
 
         val updateCategory = Category(
                 idCategory = category.idCategory,
@@ -88,4 +87,5 @@ class CategoryControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(category.name))
 
     }
+
 }

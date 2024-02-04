@@ -88,15 +88,13 @@ class CountryControllerTest {
     @Test
     fun`when updateWithIdCountry is called, it should return new country`() {
         val country = CountryEntity().build()
-        println("Country default: $country")
         countryRepository.save(country)
 
         val updateCountry = CountryEntity(1, "Novo Nome Country")
+
         given(countryServiceImpl.updateWithIdCountry(idCountry = country.idCountry!!,
                 updateCountry = updateCountry.build())).willReturn(updateCountry.build())
-        println("Novo country: $updateCountry")
 
-        //given(countryServiceImpl.deleteWithIdContry(country.idCountry!!)).willAnswer {  }
         mockMvc.perform(MockMvcRequestBuilders.put("/api/countries/{idCountry}", country.idCountry)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(updateCountry)))
