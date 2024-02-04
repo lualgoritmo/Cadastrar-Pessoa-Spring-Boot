@@ -10,10 +10,10 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/categorys")
+@RequestMapping("/categories")
 class CategoryController(private val categoryService: CategoryService) {
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     fun createCategory(@RequestBody @Valid categoryDTO: CreateCategoryDTO): CreateCategoryDTO {
         val category: Category = categoryService.createCategory(categoryDTO.toEntity())
         return CreateCategoryDTO.fromEntity(category)

@@ -1,8 +1,8 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.service
 
+import com.luciano.cadastropessoa.cadastrarpessoa.build.CategoryEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.build.AuthorEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.build.BookEntity
-import com.luciano.cadastropessoa.cadastrarpessoa.build.CategoryEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.BookRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.AuthorServiceImpl

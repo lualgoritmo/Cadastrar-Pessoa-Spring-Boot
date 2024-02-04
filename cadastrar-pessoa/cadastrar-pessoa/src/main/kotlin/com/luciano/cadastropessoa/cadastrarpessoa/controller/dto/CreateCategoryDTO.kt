@@ -11,7 +11,7 @@ data class CreateCategoryDTO(
         )
         val name: String
 ) {
-    fun toEntity() = Category(name = this.name)
+    fun toEntity() = Category(name = name)
 
     companion object {
         fun fromEntity(category: Category) =

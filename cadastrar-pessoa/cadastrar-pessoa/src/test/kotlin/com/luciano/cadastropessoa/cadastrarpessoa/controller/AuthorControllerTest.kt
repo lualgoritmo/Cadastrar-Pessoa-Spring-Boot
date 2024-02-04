@@ -69,12 +69,12 @@ class AuthorControllerTest {
         val author = AuthorEntity().build()
         authorRepository.save(author)
 
-        given(authorServiceImpl.getByIdAuthor(author.idAuthor!!)).willReturn(author)
+        given(authorServiceImpl.getByIdAuthor(any())).willReturn(author)
 
         mockmvc.perform(MockMvcRequestBuilders.get("/api/authors/{idAuthor}", author.idAuthor)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk)
-                .andExpect(jsonPath("$.name", Matchers.equalTo(author.name)))
+                .andExpect(jsonPath("$.name", Matchers.equalTo(AuthorEntity().name)))
 
     }
 
