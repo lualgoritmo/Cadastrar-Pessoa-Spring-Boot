@@ -82,7 +82,10 @@ class ClientControllerTest {
                 document = "123456789",
                 phone = "27-1234-1234"
         )
-        given(clientServiceImpl.updateClient(idClient = client.idClient!!, updateClient)).willReturn(updateClient)
+        given(clientServiceImpl.updateClient(
+                idClient = client.idClient!!,
+                updateClient)
+        ).willReturn(updateClient)
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/clientîes/{idClient}/updates", client.idClient)
                 .contentType(MediaType.APPLICATION_JSON)

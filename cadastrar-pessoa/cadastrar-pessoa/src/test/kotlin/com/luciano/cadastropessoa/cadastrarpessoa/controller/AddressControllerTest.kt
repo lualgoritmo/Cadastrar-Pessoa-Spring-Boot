@@ -8,16 +8,13 @@ import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateAddressDT
 import com.luciano.cadastropessoa.cadastrarpessoa.model.AddressUser
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.AddressRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.AddressServiceImpl
-import jakarta.persistence.EntityManager
 import org.hamcrest.Matchers
 import org.hibernate.validator.internal.util.Contracts.assertNotNull
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers
 import org.mockito.BDDMockito.given
-import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.kotlin.any
@@ -28,7 +25,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath
@@ -39,8 +35,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension::class)
 class AddressControllerTest {
-    @InjectMocks
-    private lateinit var addressController: AddressController
 
     @Mock
     private lateinit var addressServiceImpl: AddressServiceImpl
@@ -54,8 +48,6 @@ class AddressControllerTest {
     @Autowired
     private lateinit var objectMapper: ObjectMapper
 
-    @Mock
-    private lateinit var entityManeger: EntityManager
 
     @BeforeEach
     fun setUp() {
@@ -63,8 +55,6 @@ class AddressControllerTest {
             mockmvc = MockMvcBuilders
                     .standaloneSetup(AddressController(addressServiceImpl))
                     .build()
-
-
     }
     @Test
     fun `when createAddress is called, it should return address`() {

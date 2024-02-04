@@ -66,7 +66,6 @@ class StateControllerTest {
                 country = country
         ).build()
 
-        // Atualize o mock para retornar um objeto não nulo
         given(stateServiceImpl.createState(any())).willReturn(createState)
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/states")
