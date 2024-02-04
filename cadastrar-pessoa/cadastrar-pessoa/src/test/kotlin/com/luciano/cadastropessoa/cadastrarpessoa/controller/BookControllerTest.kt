@@ -37,12 +37,6 @@ class BookControllerTest {
     private lateinit var bookRepository: BookRepository
 
     @Autowired
-    private lateinit var categoryRepository: CategoryRepository
-
-    @Autowired
-    private lateinit var authorRepository: AuthorRepository
-
-    @Autowired
     private lateinit var objectMapper: ObjectMapper
 
     @Autowired
@@ -91,4 +85,20 @@ class BookControllerTest {
         verify(bookServiceImpl, times(1)).getByIdBook(book.idBook!!)
     }
 
+    @Test
+    fun`when deleteBookWithId is called, it should return`() {
+        val author = AuthorEntity().build()
+        val category = CategoryEntity().build()
+
+        val book = BookEntity(authorId = author, categoryId = category).build()
+        bookRepository.save(book)
+
+        given(bookServiceImpl.deleteByIdBook(any())).will {  }
+
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/books/{idBook}/delete", book.idBook)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers.status().isNoContent)
+
+        verify(bookServiceImpl, times(1)).deleteByIdBook(book.idBook!!)
+    }
 }
