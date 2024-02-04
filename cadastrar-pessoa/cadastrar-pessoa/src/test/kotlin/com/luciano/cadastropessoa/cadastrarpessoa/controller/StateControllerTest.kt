@@ -60,20 +60,22 @@ class StateControllerTest {
     @Test
     fun `when createState`() {
         val country = CountryEntity().build()
-        val requireStateDTO = RequireStateDTO(
-                name = "BA",
-                countryId = country.idCountry
-        )
 
-        given(countryServiceImpl.getWithIdCountry(anyLong())).willReturn(country)
+        val createState = StateEntity(
+                name = "Bahia",
+                country = country
+        ).build()
 
-        given(stateServiceImpl.createState(any())).willReturn(StateEntity().build())  // ou createState se ele já estiver definido
+        // Atualize o mock para retornar um objeto não nulo
+        given(stateServiceImpl.createState(any())).willReturn(createState)
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/states")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(requireStateDTO)))
+                .content(objectMapper.writeValueAsString(createState)))
                 .andExpect(MockMvcResultMatchers.status().isCreated)
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.equalTo(requireStateDTO.name)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(createState.name))
     }
+
+
 
 }

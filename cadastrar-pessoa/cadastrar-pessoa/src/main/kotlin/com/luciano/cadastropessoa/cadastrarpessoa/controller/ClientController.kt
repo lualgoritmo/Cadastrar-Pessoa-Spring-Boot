@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/clients")
+@RequestMapping("/api/clientîes")
 class ClientController(private val clientService: ClientService) {
 
     @PostMapping
@@ -20,7 +20,7 @@ class ClientController(private val clientService: ClientService) {
         return CreateClientDTO.fromEntity(client)
     }
 
-    @GetMapping
+    @GetMapping("/{idClient}")
     @ResponseStatus(HttpStatus.OK)
     fun getByIdClient(@PathVariable idClient: Long): CreateClientDTO {
         try {

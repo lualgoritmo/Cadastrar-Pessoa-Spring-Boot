@@ -15,7 +15,7 @@ data class StateEntity(
             country = country
     )
     companion object {
-        fun fromEntityBuild(state: StateUF) = RequireStateDTO(
+        fun fromEntityBuild(state: StateEntity) = RequireStateDTO(
                 name = state.name,
                 countryId = state.country.idCountry
         )
