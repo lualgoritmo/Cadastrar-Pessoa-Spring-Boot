@@ -143,9 +143,12 @@ class AddressControllerTest {
     @Test
     fun `should delete address by id`() {
         val idAddressToDelete = 1L
+
         mockmvc.perform(delete("/api/address/$idAddressToDelete/deleteAddress"))
                 .andExpect(status().isNoContent)
+
         val idAddressCaptor = argumentCaptor<Long>()
+
         verify(addressServiceImpl).deleteWithIdAddress(idAddressCaptor.capture())
 
         assertNotNull(idAddressCaptor.firstValue)

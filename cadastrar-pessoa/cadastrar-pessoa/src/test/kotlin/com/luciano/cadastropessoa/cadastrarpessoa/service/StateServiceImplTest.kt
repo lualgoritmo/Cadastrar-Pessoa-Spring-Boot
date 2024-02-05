@@ -1,8 +1,11 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.service
 
+import com.luciano.cadastropessoa.cadastrarpessoa.build.CountryEntity
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.RequireStateDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Country
 import com.luciano.cadastropessoa.cadastrarpessoa.model.StateUF
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.StateRepository
+import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.CountryServiceImpl
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.StateServiceImpl
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertNull
@@ -20,23 +23,30 @@ class StateServiceImplTest {
 
     @Mock
     private lateinit var stateRepository: StateRepository
-
+    @Mock
+    private lateinit var countryService: CountryServiceImpl
     private fun countryObject() = Country(idCountry = 1, "Brasil")
     private fun stateObject() = StateUF(idState = 1, name = "SP", country = countryObject())
 
     @Test
     fun `when the createState method is called, it must return a state`() {
-        val state = stateObject()
+        val country = CountryEntity().build()
+        val createStateDTO = RequireStateDTO("BA", countryId = country.idCountry)
 
-        `when`(stateRepository.save(state)).thenReturn(state)
+        `when`(countryService.getWithIdCountry(country.idCountry!!)).thenReturn(country)
 
-        val saveState = stateServiceImpl.createState(state)
+        val stateToSalve = createStateDTO.toEntity(country)
 
-        assertThat(saveState).isEqualTo(state)
+        `when`(stateRepository.save(stateToSalve)).thenReturn(stateToSalve)
+
+        val saveState = stateServiceImpl.createState(createStateDTO)
+
+        assertThat(saveState).isEqualTo(stateToSalve)
         assertThat(saveState).isNotNull
 
         verify(stateRepository, times(1)).save(saveState)
     }
+
 
     @Test
     fun `when the getAllState method is called, return list State`() {
