@@ -6,6 +6,7 @@ import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.CategoryRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.CategoryServiceImpl
 import org.hamcrest.Matchers
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
@@ -36,6 +37,10 @@ class CategoryControllerTest {
 
     @Autowired
     private lateinit var categoryRepository: CategoryRepository
+    @BeforeEach
+    fun setUp() {
+        categoryRepository.deleteAll()
+    }
     @Test
     fun `when createCategory is called, it should return Category`() {
         val category = CategoryEntity()
@@ -52,18 +57,18 @@ class CategoryControllerTest {
 
     @Test
     fun `when getByIdCategory is called, it should return one category`() {
-        val categoryEntity = CategoryEntity()
+        val categoryEntity = CategoryEntity().build()
 
-        categoryRepository.save(categoryEntity.build())
+        categoryRepository.save(categoryEntity)
 
-        given(categoryServiceImpl.getByIdCategory(CategoryEntity().idCategory)).willReturn(CategoryEntity().build())
+        given(categoryServiceImpl.getByIdCategory(categoryEntity.idCategory!!)).willReturn(categoryEntity)
 
         mockMvc.perform(MockMvcRequestBuilders.get(
-                "/categories/{idCategory}", CategoryEntity().idCategory)
+                "/categories/{idCategory}", categoryEntity.idCategory)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(CategoryEntity())))
                 .andExpect(MockMvcResultMatchers.status().isOk)
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(CategoryEntity().name))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(categoryEntity.name))
 
     }
 

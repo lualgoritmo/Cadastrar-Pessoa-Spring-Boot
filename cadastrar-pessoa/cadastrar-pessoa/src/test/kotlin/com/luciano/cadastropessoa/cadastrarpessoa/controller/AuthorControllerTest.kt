@@ -132,7 +132,7 @@ class AuthorControllerTest {
         given(authorServiceImpl.deleteByIdAuthor(author.idAuthor!!)).willAnswer {}
 
         mockmvc.perform(MockMvcRequestBuilders.delete(
-                "/api/authors//{idAuthor}/deleteAuthor", author.idAuthor)
+                "/api/authors/{idAuthor}/deleteAuthor", author.idAuthor)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNoContent)
 

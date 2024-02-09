@@ -1,0 +1,35 @@
+[33me6b502f[m[33m ([m[1;36mHEAD -> [m[1;32mfinalizecadastreperson[m[33m)[m HEAD@{0}: checkout: moving from main to finalizecadastreperson
+[33m69926e0[m[33m ([m[1;32mmain[m[33m)[m HEAD@{1}: commit: Refazendo
+[33m9bb92d3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{2}: checkout: moving from finalizecadastreperson to main
+[33me6b502f[m[33m ([m[1;36mHEAD -> [m[1;32mfinalizecadastreperson[m[33m)[m HEAD@{3}: rebase: checkout finalizecadastreperson
+[33m878a6e0[m HEAD@{4}: rebase: checkout main
+[33me6b502f[m[33m ([m[1;36mHEAD -> [m[1;32mfinalizecadastreperson[m[33m)[m HEAD@{5}: rebase: checkout finalizecadastreperson
+[33m878a6e0[m HEAD@{6}: rebase: checkout main
+[33me6b502f[m[33m ([m[1;36mHEAD -> [m[1;32mfinalizecadastreperson[m[33m)[m HEAD@{7}: commit: Mover testes
+[33m2bc7e09[m[33m ([m[1;31morigin/finalizecadastreperson[m[33m)[m HEAD@{8}: checkout: moving from main to finalizecadastreperson
+[33m878a6e0[m HEAD@{9}: commit: Iniciando os testes
+[33mc925246[m HEAD@{10}: rebase: checkout main
+[33m2bc7e09[m[33m ([m[1;31morigin/finalizecadastreperson[m[33m)[m HEAD@{11}: commit: Finalizando ainda
+[33mc925246[m HEAD@{12}: checkout: moving from main to finalizecadastreperson
+[33mc925246[m HEAD@{13}: commit: Refatorando
+[33m9bb92d3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{14}: commit: Feito o Address
+[33mb7f4480[m HEAD@{15}: commit: Criar o Address
+[33mdb3c7d4[m HEAD@{16}: commit: Finalizar o cadastro
+[33m191640c[m HEAD@{17}: commit: Feito o service e controller do Country
+[33m17cb5b7[m HEAD@{18}: commit: Criar novas entidades
+[33m01c5756[m HEAD@{19}: commit: Iniciando testes
+[33m7634a00[m HEAD@{20}: commit: Completo
+[33m3a51b54[m HEAD@{21}: commit: Relacionamento completo
+[33m8569f3d[m HEAD@{22}: commit: Entidade Category pronta!
+[33m62710c7[m HEAD@{23}: commit: Criar Service e controller, falta apenas o editar
+[33m73ae20c[m HEAD@{24}: commit: Projeto com problema no unique
+[33m359c9e1[m HEAD@{25}: commit: Criando a validação do email e name
+[33m63d0296[m HEAD@{26}: commit: Entidade Category feita, service e iniciei o Controller
+[33m48003b6[m HEAD@{27}: commit: Refatorando nome das classes
+[33mac46ff0[m HEAD@{28}: commit: Usando validate no service
+[33m1716f11[m HEAD@{29}: commit: Limpo
+[33mbf4eb37[m HEAD@{30}: commit: Inicio de projeto
+[33m0cebb12[m HEAD@{31}: commit: Person criado
+[33me2fc39e[m HEAD@{32}: commit: Excluir
+[33m0addbfe[m HEAD@{33}: commit: Crud do Person feito!
+[33m74b9444[m HEAD@{34}: clone: from https://github.com/lualgoritmo/Cadastrar-Pessoa-Spring-Boot.git

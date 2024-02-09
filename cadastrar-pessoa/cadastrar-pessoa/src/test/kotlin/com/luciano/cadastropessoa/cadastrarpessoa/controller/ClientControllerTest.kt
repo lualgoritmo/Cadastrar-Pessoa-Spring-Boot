@@ -7,6 +7,7 @@ import com.luciano.cadastropessoa.cadastrarpessoa.repository.ClientRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.AddressServiceImpl
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.ClientServiceImpl
 import org.hamcrest.Matchers
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
@@ -41,7 +42,10 @@ class ClientControllerTest {
 
     @Mock
     private lateinit var clientServiceImpl: ClientServiceImpl
-
+    @BeforeEach
+    fun setUp() {
+        clientRepository.deleteAll()
+    }
     @Test
     fun `when createClient is called, it should return clientUser`() {
         val client = ClientUserEntity().build()

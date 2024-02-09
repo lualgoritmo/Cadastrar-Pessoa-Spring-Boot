@@ -1,6 +1,7 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.build
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateBookDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.UpdateBookDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Category
@@ -27,7 +28,16 @@ data class BookEntity(
             author = authorId,
             categoryId = categoryId
     )
-
+    fun buildUpdateBook() = UpdateBookDTO(
+            title = title,
+            isbnBook = isbnBook,
+            resume = resume,
+            summary = null,
+            price = price,
+            datePost = datePost,
+            authorId = authorId,
+            categoryId = categoryId
+    )
     companion object {
         fun fromEntity(bookEntity: BookEntity) = CreateBookDTO(
                 title = bookEntity.title,

@@ -9,6 +9,7 @@ import org.hamcrest.Matchers
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.Mock
 import org.mockito.kotlin.any
 import org.mockito.kotlin.given
 import org.mockito.kotlin.times
@@ -40,15 +41,13 @@ class StateControllerTest {
 
     @Autowired
     private lateinit var objectMapper: ObjectMapper
-
     @BeforeEach
     fun setUp() {
         stateRepository.deleteAll()
     }
-
     @Test
     fun `when createState is called, it should return state`() {
-        val createState = StateEntity(name = "BA", country = CountryEntity().build())
+        val createState = StateEntity(country = CountryEntity().build())
 
         given(stateServiceImpl.createState(any())).willReturn(createState.build())
 
@@ -74,8 +73,6 @@ class StateControllerTest {
 
         verify(stateServiceImpl, times(1)).getStateById(state.idState!!)
     }
-
-
     @Test
     fun`when deleteWithIdState is called, it should returns nothing`() {
         val state = StateEntity(name = "BA", country = CountryEntity().build()).build()
@@ -90,4 +87,5 @@ class StateControllerTest {
         verify(stateServiceImpl, times(1)).deleteWithIdState(state.idState!!)
 
     }
+
 }

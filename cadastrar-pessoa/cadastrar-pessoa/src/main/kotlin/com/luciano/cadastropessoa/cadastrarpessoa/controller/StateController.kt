@@ -3,16 +3,13 @@ package com.luciano.cadastropessoa.cadastrarpessoa.controller
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.RequireStateDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.StateNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.StateUF
-import com.luciano.cadastropessoa.cadastrarpessoa.service.CountryService
 import com.luciano.cadastropessoa.cadastrarpessoa.service.StateService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-
 @RestController
 @RequestMapping("/api/states")
 class StateController(private val stateService: StateService) {
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createState(@RequestBody @Valid createStateDTO: RequireStateDTO): RequireStateDTO {
