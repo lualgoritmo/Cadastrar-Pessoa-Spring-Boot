@@ -108,27 +108,26 @@ class BookControllerTest {
 
         bookRepository.save(book)
 
-        val updateBook = Book(
-                idBook = book.idBook!!,
+        val updateBook = BookEntity(
                 title = "Novo Livro Build",
                 isbnBook = "0123456",
                 resume = "Novo Resumo Build",
                 summary = null,
                 price = 30.0,
                 datePost = "11/10/2022",
-                author = author,
+                authorId = author,
                 categoryId = category
-        )
+        ).buildUpdateBook()
 
-        given(bookServiceImpl.updateWithBookId(idBook = book.idBook!!, updateBook)).willReturn(updateBook)
+        given(bookServiceImpl.updateWithBookId(idBook = book.idBook!!, updateBook.toEntity())).willReturn(updateBook.toEntity())
 
         mockMvc.perform(MockMvcRequestBuilders.put("/api/books/{idBook}/update", book.idBook)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(updateBook)))
                 .andExpect(MockMvcResultMatchers.status().isOk)
-                .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.equalTo(book.title)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.title", Matchers.equalTo(updateBook.title)))
 
-        //verify(bookServiceImpl, times(1)).updateWithBookId(book.idBook!!, updateBook)
+        verify(bookServiceImpl, times(1)).updateWithBookId(book.idBook!!, updateBook.toEntity())
     }
 
     @Test

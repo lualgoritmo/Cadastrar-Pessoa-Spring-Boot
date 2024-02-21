@@ -27,11 +27,11 @@ data class CreateClientDTO(
 ) {
     fun toEntity() = ClientUser(
             idClient = 0,
-            email = this.email,
-            name = this.name,
-            surname = this.surname,
-            document = this.document,
-            phone = this.phone,
+            email = email,
+            name = name,
+            surname = surname,
+            document = document,
+            phone = phone,
             addresses = emptyList()
     )
 
