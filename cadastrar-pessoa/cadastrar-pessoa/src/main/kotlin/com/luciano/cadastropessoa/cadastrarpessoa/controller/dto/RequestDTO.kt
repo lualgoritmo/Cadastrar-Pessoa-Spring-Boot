@@ -13,7 +13,7 @@ data class ResponseDTORequire(
         val resultadoSolicitacao: SolicitacionResult
 )
 
-enum class SolicitacionResult() {
+enum class SolicitacionResult {
     COM_RESTRICAO,
     SEM_RESTRICAO
 }

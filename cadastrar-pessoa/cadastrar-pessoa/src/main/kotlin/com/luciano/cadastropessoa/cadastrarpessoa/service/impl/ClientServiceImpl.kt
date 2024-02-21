@@ -2,6 +2,7 @@ package com.luciano.cadastropessoa.cadastrarpessoa.service.impl
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.AddressResponseDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.FullClientDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.ResponseAddressDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.AddressCardNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.ClientNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.ClientUser
