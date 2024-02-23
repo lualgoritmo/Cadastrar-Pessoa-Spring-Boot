@@ -1,6 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller
 
-import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.RequestDTO
+import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.RequestClientDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.ResponseDTORequire
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.RequestUserImpl
 import org.springframework.http.HttpStatus
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController
 class RequestUserController(private val userClient: RequestUserImpl) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createRequest(@RequestBody requestDTO: RequestDTO):ResponseDTORequire {
+    fun createRequest(@RequestBody requestDTO: RequestClientDTO):ResponseDTORequire {
         return userClient.createRequest(requestDTO)
     }
 

@@ -1,6 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller.dto
 
-data class RequestDTO(
+data class RequestClientDTO(
         val documento: String,
         val nome: String,
         val idProposta: String
