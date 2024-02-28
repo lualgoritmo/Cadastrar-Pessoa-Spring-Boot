@@ -11,58 +11,59 @@ services:
       - POSTGRES_DB=people
     ports:
       - "5432:5432"
+#    volumes:
+#      - /private/var/lib/postgresql:/var/lib/postgresq
+  cadastrarpessoa:
+    image: primeiraimage:latest
+    container_name: cadastrarpessoa
+    environment:
+      - spring.datasource.url=jdbc:postgresql://postgres:5432/people
+#      - http:://google.com.br:80
+#      - protocol://host:port/path?params=???
+    ports:
+        - "8081:8080"
+    depends_on:
+        - postgres
 
-#  cadastrarpessoa:
-#    image: primeiraimage:latest
-#    container_name: cadastrarpessoa
-#    environment:
-#      - spring.datasource.url=jdbc:postgresql://postgres:5432/people
-##      - http:://google.com.br:80
-##      - protocol://host:port/path?params=???
-#    ports:
-#      - "8080:8080"
-#    depends_on:
-#      - postgres
-#
 #  pessoacadastrar:
-#    image: segundaimage:latest
-#    container_name: pessoacadastrar
-#    environment:
-#      - spring.datasource.url=jdbc:postgresql://postgres:5432/people
+#      image: segundaimage:latest
+#      container_name: pessoacadastrar
+#      environment:
+#        - spring.datasource.url=jdbc:postgresql://postgres:5432/people
+#      ports:
+#        - "8081:8080"
+#      depends_on:
+#        - postgres
+#
+#  jaeger:
+#    image: jaegertracing/all-in-one
 #    ports:
-#      - "8081:8080"
-#    depends_on:
-#      - postgres
-
-  jaeger:
-    image: jaegertracing/all-in-one
-    ports:
-      - 5775:5775/udp
-      - 6831:6831/udp
-      - 6832:6832/udp
-      - 5778:5778
-      - 16686:16686
-      - 14268:14268
-      - 14250:14250
-      - 9411:9411
-    environment:
-      COLLECTOR_ZIPKIN_HTTP_PORT: 9411
-
-  contas:
-    image: 'zupacademy/contas'
-    ports:
-      - 8888:8888
-    environment:
-      SERVER_PORT: 8888
-      LOG_LEVEL: INFO
-      JAEGER_ENDPOINT: http://jaeger:14268/api/traces
-
-  analise:
-    image: 'zupacademy/analise-financeira'
-    ports:
-      - 9999:9999
-    environment:
-      SERVER_PORT: 9999
-      LOG_LEVEL: INFO
-      URL_SISTEMA_CARTAO: http://contas:8888/api/cartoes
-      JAEGER_ENDPOINT: http://jaeger:14268/api/traces
+#      - 5775:5775/udp
+#      - 6831:6831/udp
+#      - 6832:6832/udp
+#      - 5778:5778
+#      - 16686:16686
+#      - 14268:14268
+#      - 14250:14250
+#      - 9411:9411
+#    environment:
+#      COLLECTOR_ZIPKIN_HTTP_PORT: 9411
+#
+#  contas:
+#    image: 'zupacademy/contas'
+#    ports:
+#      - 8888:8888
+#    environment:
+#      SERVER_PORT: 8888
+#      LOG_LEVEL: INFO
+#      JAEGER_ENDPOINT: http://jaeger:14268/api/traces
+#
+#  analise:
+#    image: 'zupacademy/analise-financeira'
+#    ports:
+#      - 9999:9999
+#    environment:
+#      SERVER_PORT: 9999
+#      LOG_LEVEL: INFO
+#      URL_SISTEMA_CARTAO: http://contas:8888/api/cartoes
+#      JAEGER_ENDPOINT: http://jaeger:14268/api/traces

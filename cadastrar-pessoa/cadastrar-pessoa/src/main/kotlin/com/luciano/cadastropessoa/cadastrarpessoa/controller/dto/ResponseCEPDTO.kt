@@ -7,5 +7,6 @@ data class ResponseCEPDTO(
         val localidade: String,
         val complemento: String,
         val bairro: String,
-        val ddd: String
+        val ddd: String,
+        val uf:String
 )

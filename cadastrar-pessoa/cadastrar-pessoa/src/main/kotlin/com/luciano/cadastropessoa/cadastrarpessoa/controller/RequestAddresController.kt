@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 class RequestAddressController(private val requestAddressClient: RequestAddressClient) {
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    fun getCep(@RequestBody requestCep: RequireCEPDTO): ResponseCEPDTO {
+    fun getAddressByCep(@RequestBody requestCep: RequireCEPDTO): ResponseCEPDTO {
         return requestAddressClient.getAddressByCep(requestCep.cep)
     }
 
