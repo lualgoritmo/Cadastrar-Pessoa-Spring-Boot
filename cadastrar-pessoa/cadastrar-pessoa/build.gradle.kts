@@ -37,10 +37,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.5.2")
 
-    implementation("org.springdoc:springdoc-openapi-ui:1.5.9")
-
-    implementation("io.springfox:springfox-boot-starter:3.0.0")
-    implementation("io.springfox:springfox-swagger-ui:3.0.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 
     implementation("javax.servlet:javax.servlet-api:4.0.1")
     implementation("io.github.classgraph:classgraph:4.8.160")

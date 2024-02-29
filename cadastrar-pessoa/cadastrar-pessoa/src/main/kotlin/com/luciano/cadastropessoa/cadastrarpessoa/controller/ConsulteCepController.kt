@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/cepaddress")
-//@Api(tags = ["consulteCep"])
 class ConsulteCepController(private val consulteCep: ConsulteCepImpl) {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
