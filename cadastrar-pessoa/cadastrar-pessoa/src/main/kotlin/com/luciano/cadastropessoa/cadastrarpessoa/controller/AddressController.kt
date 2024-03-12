@@ -16,7 +16,6 @@ class AddressController(private val addressService: AddressService) {
         val address = addressService.createAddress(createAddressDTO)
         return CreateAddressDTO.fromEntity(address)
     }
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     fun getAllAddress(): List<ResponseAddressDTO> {

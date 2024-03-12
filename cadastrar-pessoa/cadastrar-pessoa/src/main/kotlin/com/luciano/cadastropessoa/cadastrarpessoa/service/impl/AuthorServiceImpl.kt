@@ -6,17 +6,25 @@ import com.luciano.cadastropessoa.cadastrarpessoa.repository.AuthorRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.AuthorService
 import jakarta.transaction.Transactional
 import org.springframework.dao.EmptyResultDataAccessException
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 
 @Service
 class AuthorServiceImpl(
-    private val authorRepository: AuthorRepository
+    private val authorRepository: AuthorRepository,
+        //private val authorPageRepository: AuthorPageRepository
 ) : AuthorService {
     @Transactional
-    override fun createAuthor(author: Author): Author =
-        authorRepository.save(author)
+    override fun createAuthor(author: Author): Author = authorRepository.save(author)
     @Transactional
     override fun getAllAuthor(): List<Author> = authorRepository.findAll()
+
+    @Transactional
+    override fun getPageAuthor(page: Int, size: Int): Page<Author> {
+        val pageable = PageRequest.of(page, size)
+        return authorRepository.findAll(pageable)
+    }
     @Transactional
     override fun getByIdAuthor(idAuthor: Long): Author = authorRepository.findById(idAuthor)
         .orElseThrow { AuthorNotFoundException(idAuthor) }
