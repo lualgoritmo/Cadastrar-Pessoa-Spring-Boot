@@ -35,7 +35,7 @@ services:
 #      depends_on:
 #        - postgres
 
-- Fiz as configurações corretas do controller e repositorys
-  - Eu subi aplicação usando o intellije corretamente na porta 8080
-  - No postmam estava errado e no docker compose, pois subirs uma imagem antiga na porta 8081
-  - No postmam, estava mandando os atributos com o nome do parametro errado: size no lugar de sizeItem
+#- Fiz as configurações corretas do controller e repositorys
+#  - Eu subi aplicação usando o intellije corretamente na porta 8080
+#  - No postmam estava errado e no docker compose, pois subirs uma imagem antiga na porta 8081
+#  - No postmam, estava mandando os atributos com o nome do parametro errado: size no lugar de sizeItem

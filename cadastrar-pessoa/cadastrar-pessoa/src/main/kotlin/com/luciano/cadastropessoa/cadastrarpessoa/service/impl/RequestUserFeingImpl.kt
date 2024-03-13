@@ -7,7 +7,7 @@ import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 @FeignClient(name = "solicitacao-analise", url = "http://localhost:9999")
-interface RequestUserImpl {
+interface RequestUserFeingImpl {
     @PostMapping("/api/solicitacao",consumes = [MediaType.APPLICATION_JSON_VALUE])
     fun createRequest(@RequestBody solicitacaoDTO: RequestDTO): ResponseDTORequire
 
