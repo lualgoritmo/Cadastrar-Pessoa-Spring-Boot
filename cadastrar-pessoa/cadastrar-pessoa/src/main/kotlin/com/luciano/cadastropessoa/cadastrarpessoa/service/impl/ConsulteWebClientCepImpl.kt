@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient
 import org.springframework.web.util.UriComponentsBuilder
 
 @Service
-class ConsulteCepImpl(private val clientWeb: WebClient) {
+class ConsulteWebClientCepImpl(private val clientWeb: WebClient) {
     suspend fun consulteViaCep(cep: String): ResponseCEPDTO {
         val uri = UriComponentsBuilder.fromUriString("https://viacep.com.br/ws/{cep}/json/")
                 .buildAndExpand(cep)
