@@ -15,7 +15,11 @@ class BookController(private val bookService: BookService) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createsBook(@RequestBody @Valid bookDTO: CreateBookDTO): CreateBookDTO? {
-        val book: Book = bookService.createBook(bookDTO)
+        val dto = bookDTO.copy(
+            authorId = null
+        )
+
+        val book: Book = bookService.createBook(dto)
         return CreateBookDTO.fromEntity(book)
     }
 
@@ -23,8 +27,9 @@ class BookController(private val bookService: BookService) {
     @ResponseStatus(HttpStatus.OK)
     fun getAllBooks(): List<CreateBookDTO> {
         val books: List<Book> = bookService.getAllBooks().also {
-            if (it.isEmpty()) {
+            if (it.isNotEmpty()) {
                 println("Está lista está vazia!")
+                throw IllegalArgumentException()
             }
             println("A lista possui ${it.size} itens")
         }

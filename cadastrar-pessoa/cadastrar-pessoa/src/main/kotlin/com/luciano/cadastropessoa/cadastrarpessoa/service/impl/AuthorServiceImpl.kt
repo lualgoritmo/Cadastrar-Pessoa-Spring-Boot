@@ -27,7 +27,7 @@ class AuthorServiceImpl(
             .orElseThrow { AuthorNotFoundException(idAuthor) }
 
         val updatedAuthor = existingAuthor.copy(
-            name = updateAuthor.name,
+            name = updateAuthor.email,
             email = updateAuthor.email,
             description = updateAuthor.description
         )

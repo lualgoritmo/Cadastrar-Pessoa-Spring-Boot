@@ -6,7 +6,7 @@ import jakarta.validation.ConstraintValidator
 import jakarta.validation.ConstraintValidatorContext
 import org.springframework.stereotype.Component
 import kotlin.reflect.KClass
-@Component
+
 class UniqueValueValidator(
     @PersistenceContext private val manager: EntityManager
 ) : ConstraintValidator<UniqueValue, Any?> {
