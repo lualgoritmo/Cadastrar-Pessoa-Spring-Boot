@@ -42,19 +42,19 @@ class BookServiceImpl(
         }
     }
     @Transactional
-    override fun updateWithBookId(idBook: Long, updateBook: Book): Book {
+    override fun updateWithBookId(idBook: Long, book: Book): Book {
         val existingBook: Book = bookRepository.findById(idBook).orElseThrow {
             throw BookNotFoundException(idBook)
         }
 
         val updateBook = existingBook.copy(
-            title = updateBook.title,
-            isbnBook = updateBook.isbnBook,
-            summary = updateBook.summary,
-            resume = updateBook.resume,
-            price = updateBook.price,
-            datePost = updateBook.datePost,
-            author = updateBook.author
+            title = book.title,
+            isbnBook = book.isbnBook,
+            summary = book.summary,
+            resume = book.resume,
+            price = book.price,
+            datePost = book.datePost,
+            author = book.author
         )
         return bookRepository.save(updateBook)
     }
