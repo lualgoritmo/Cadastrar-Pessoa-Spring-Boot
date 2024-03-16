@@ -11,30 +11,6 @@ services:
       - POSTGRES_DB=people
     ports:
       - "5432:5432"
-#    volumes:
-##      - /private/var/lib/postgresql:/var/lib/postgresq
-#  cadastrarpessoa:
-#    image: primeiraimage:latest
-#    container_name: cadastrarpessoa
-#    environment:
-#      - spring.datasource.url=jdbc:postgresql://postgres:5432/people
-##      - http:://google.com.br:80
-##      - protocol://host:port/path?params=???
-#    ports:
-
-#        - "8081:8080"
-#    depends_on:
-#        - postgres
-
-#  pessoacadastrar:
-#      image: segundaimage:latest
-#      container_name: pessoacadastrar
-#      environment:
-#        - spring.datasource.url=jdbc:postgresql://postgres:5432/people
-#      ports:
-#        - "8081:8080"
-#      depends_on:
-#        - postgres
 
   jaeger:
     image: jaegertracing/all-in-one
