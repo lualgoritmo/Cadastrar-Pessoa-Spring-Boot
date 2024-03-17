@@ -12,22 +12,42 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/books")
 class BookController(private val bookService: BookService) {
+    //    @PostMapping
+//    @ResponseStatus(HttpStatus.CREATED)
+//    fun createsBook(@RequestBody @Valid bookDTO: CreateBookDTO): CreateBookDTO? {
+//        val dto = bookDTO.copy(
+//            authorId = null
+//        )
+//
+//        val book: Book = bookService.createBook(dto)
+//        return CreateBookDTO.fromEntity(book)
+//    }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createsBook(@RequestBody @Valid bookDTO: CreateBookDTO): CreateBookDTO? {
-        val dto = bookDTO.copy(
-            authorId = null
-        )
-
-        val book: Book = bookService.createBook(dto)
+        val book: Book = bookService.createBook(bookDTO)
+        println("BookId: ${book.categoryId}, ${book.author.idAuthor}")
         return CreateBookDTO.fromEntity(book)
     }
+
+//    @GetMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    fun getAllBooks(): List<CreateBookDTO> {
+//        val books: List<Book> = bookService.getAllBooks().also {
+//            if (it.isNotEmpty()) {
+//                println("Está lista está vazia!")
+//                throw IllegalArgumentException()
+//            }
+//            println("A lista possui ${it.size} itens")
+//        }
+//        return books.map { CreateBookDTO.fromEntity(it) }.toList()
+//    }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     fun getAllBooks(): List<CreateBookDTO> {
         val books: List<Book> = bookService.getAllBooks().also {
-            if (it.isNotEmpty()) {
+            if (it.isEmpty()) {
                 println("Está lista está vazia!")
                 throw IllegalArgumentException()
             }

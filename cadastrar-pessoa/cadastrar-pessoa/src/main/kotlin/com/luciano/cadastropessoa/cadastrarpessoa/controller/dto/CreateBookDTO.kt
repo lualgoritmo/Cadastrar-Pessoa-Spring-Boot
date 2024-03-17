@@ -34,12 +34,12 @@ data class CreateBookDTO(
     val categoryId: Long? = null
 ) {
     fun toEntity(author: Author, category: Category) = Book(
-            title = this.title,
-            isbnBook = this.isbnBook,
-            resume = this.resume,
-            summary = this.summary,
-            price = this.price,
-            datePost = this.datePost,
+            title = title,
+            isbnBook = isbnBook,
+            resume = resume,
+            summary = summary,
+            price = price,
+            datePost = datePost,
             author = author,
             categoryId = category
         )

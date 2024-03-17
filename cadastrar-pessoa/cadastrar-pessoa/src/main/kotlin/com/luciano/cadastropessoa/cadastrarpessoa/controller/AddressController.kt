@@ -1,3 +1,4 @@
+package com.luciano.cadastropessoa.cadastrarpessoa.controller
 
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.CreateAddressDTO
 import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.ResponseAddressDTO
@@ -24,6 +25,7 @@ class AddressController(private val addressService: AddressService) {
             if (it.isEmpty()) {
                 println("Lista vazia de Address")
             }
+            println("ID: $it.toList().indices")
         }
 
         return listAddress.map { ResponseAddressDTO.fromToEntity(it) }.toList()
