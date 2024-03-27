@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="367f9167-d378-4ad8-af3c-a17027fa8231" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/kafka/KafkaConsumer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/kafka/KafkaProducer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/CadastrarPessoaApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/CadastrarPessoaApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/controller/RequestAddresController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/controller/RequestAddresController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/exception/ControllerAdvice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/exception/ControllerAdvice.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/impl/AuthorServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/impl/AuthorServiceImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/controller/AddressControllerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/controller/AddressControllerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AddressServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AddressServiceImplTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AuthorServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AuthorServiceImplTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AuthorServiceTestTWO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AuthorServiceTestTWO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/BookServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/BookServiceImplTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/ClientServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/ClientServiceImplTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/CountryServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/CountryServiceImplTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/StateServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/StateServiceImplTest.kt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="cadastrar-pessoa" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="codigoparatererro" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2eBpZW2lUBkGbQt1cKVyhXBAiqr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.AddressControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AddressControllerTest.when createAddress is called, it should return address.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AddressServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AuthorControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AuthorControllerTest.when createAuthor is called, it should return author.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AuthorServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build cadastrar-pessoa.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'com.luciano.cadastropessoa.cadastrarpessoa'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'com.luciano.cadastropessoa.cadastrarpessoa.controller'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Tests in 'com.luciano.cadastropessoa.cadastrarpessoa.service'.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.cadastrar-pessoa [build -refresh-dependencies].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.cadastrar-pessoa [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.cadastrar-pessoa [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Kotlin.CadastrarPessoaApplicationKt.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;kafka&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lualg/Cadastrar-Pessoa-Spring-Boot&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  }
+}</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle build -refresh-dependencies " />
+      <command value="gradle clean" />
+      <command value="gradle buildDependents" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Kotlin.CadastrarPessoaApplicationKt">
+    <configuration name="Tests in 'com.luciano.cadastropessoa.cadastrarpessoa'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.luciano.cadastropessoa.cadastrarpessoa.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'com.luciano.cadastropessoa.cadastrarpessoa.controller'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.luciano.cadastropessoa.cadastrarpessoa.controller.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in 'com.luciano.cadastropessoa.cadastrarpessoa.service'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.luciano.cadastropessoa.cadastrarpessoa.service.*&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="cadastrar-pessoa [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="CadastrarPessoaApplicationKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.luciano.cadastropessoa.cadastrarpessoa.CadastrarPessoaApplicationKt" />
+      <module name="cadastrar-pessoa.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.CadastrarPessoaApplicationKt" />
+        <item itemvalue="Gradle.cadastrar-pessoa [buildDependents]" />
+        <item itemvalue="Gradle.Tests in 'com.luciano.cadastropessoa.cadastrarpessoa.service'" />
+        <item itemvalue="Gradle.Tests in 'com.luciano.cadastropessoa.cadastrarpessoa.controller'" />
+        <item itemvalue="Gradle.Tests in 'com.luciano.cadastropessoa.cadastrarpessoa'" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="367f9167-d378-4ad8-af3c-a17027fa8231" name="Changes" comment="" />
+      <created>1711387898910</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711387898910</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
