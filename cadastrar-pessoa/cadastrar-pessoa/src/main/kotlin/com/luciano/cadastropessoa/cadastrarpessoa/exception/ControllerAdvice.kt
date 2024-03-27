@@ -1,5 +1,6 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.exception
 
+import org.slf4j.LoggerFactory
 import org.springframework.core.Ordered
 import org.springframework.core.annotation.Order
 import org.springframework.http.HttpStatus
@@ -15,7 +16,7 @@ import org.springframework.web.context.request.WebRequest
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @RestControllerAdvice
 class ControllerAdvice {
-
+    val logger = LoggerFactory.getLogger(this::class.java)
     @ExceptionHandler(CountryNotFoundException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleExceptionIdCategory(ex: CountryNotFoundException, request: WebRequest): ErrorResponse {
@@ -30,6 +31,7 @@ class ControllerAdvice {
     @ExceptionHandler(AuthorNotFoundException::class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     fun handleExceptionIdAuthor(ex: AuthorNotFoundException, request: WebRequest): ErrorResponse {
+        logger.info("Passando pelo Controller")
         return ErrorResponse(
                 400,
                 "id incorreto, não encontrado no servidor!",

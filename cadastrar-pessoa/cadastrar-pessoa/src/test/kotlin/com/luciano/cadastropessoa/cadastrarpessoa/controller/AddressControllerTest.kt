@@ -1,6 +1,5 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.controller
 
-import AddressController
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.luciano.cadastropessoa.cadastrarpessoa.build.ClientUserEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.build.StateEntity
@@ -13,7 +12,6 @@ import org.hibernate.validator.internal.util.Contracts.assertNotNull
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.BDDMockito.given
 import org.mockito.Mock
 import org.mockito.Mockito.verify
@@ -23,7 +21,6 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
@@ -33,7 +30,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ExtendWith(SpringExtension::class)
 class AddressControllerTest {
 
     @Mock

@@ -1,8 +1,8 @@
 package com.luciano.cadastropessoa.cadastrarpessoa.service
 
-import com.luciano.cadastropessoa.cadastrarpessoa.build.CategoryEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.build.AuthorEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.build.BookEntity
+import com.luciano.cadastropessoa.cadastrarpessoa.build.CategoryEntity
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Book
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.BookRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.AuthorServiceImpl
@@ -11,13 +11,14 @@ import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.CategoryServiceIm
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.*
-import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.junit.jupiter.SpringExtension
 import java.util.*
 
-@SpringBootTest
+@ExtendWith(SpringExtension::class)
 class BookServiceImplTest {
     @InjectMocks
     private lateinit var bookServiceImpl: BookServiceImpl

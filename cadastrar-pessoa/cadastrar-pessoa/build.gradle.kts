@@ -41,6 +41,14 @@ dependencies {
 
     implementation("javax.servlet:javax.servlet-api:4.0.1")
     implementation("io.github.classgraph:classgraph:4.8.160")
+
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-logging")
+
+    implementation("org.springframework.kafka:spring-kafka")
+    implementation("org.apache.kafka:kafka-clients")
+
+//    implementation("ch.qos.logback:logback-classic:1.7.0")
 }
 
 tasks.withType<KotlinCompile> {
