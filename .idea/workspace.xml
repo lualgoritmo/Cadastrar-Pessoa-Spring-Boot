@@ -4,26 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="367f9167-d378-4ad8-af3c-a17027fa8231" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/kafka/KafkaConsumer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/kafka/KafkaProducer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/docker/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/CadastrarPessoaApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/CadastrarPessoaApplication.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/controller/RequestAddresController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/controller/RequestAddresController.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/exception/ControllerAdvice.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/exception/ControllerAdvice.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/impl/AuthorServiceImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/impl/AuthorServiceImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/controller/AddressControllerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/controller/AddressControllerTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AddressServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AddressServiceImplTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AuthorServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AuthorServiceImplTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AuthorServiceTestTWO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/AuthorServiceTestTWO.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/BookServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/BookServiceImplTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/ClientServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/ClientServiceImplTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/CountryServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/CountryServiceImplTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/StateServiceImplTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/test/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/StateServiceImplTest.kt" afterDir="false" />
+    <list default="true" id="367f9167-d378-4ad8-af3c-a17027fa8231" name="Changes" comment="Usar Kafka">
+      <change afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/controller/KafkaTestController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/impl/AuthorTestConsumer.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cadastrar-pessoa/cadastrar-pessoa/src/main/kotlin/com/luciano/cadastropessoa/cadastrarpessoa/service/impl/AuthorTestProducer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,6 +220,15 @@
       <option name="presentableId" value="Default" />
       <updated>1711387898910</updated>
     </task>
+    <task id="LOCAL-00001" summary="Usar Kafka">
+      <option name="closed" value="true" />
+      <created>1711501694792</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1711501694792</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,5 +241,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Usar Kafka" />
+    <option name="LAST_COMMIT_MESSAGE" value="Usar Kafka" />
   </component>
 </project>
