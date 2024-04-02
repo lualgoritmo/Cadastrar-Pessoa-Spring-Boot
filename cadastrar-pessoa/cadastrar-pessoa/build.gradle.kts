@@ -48,7 +48,7 @@ dependencies {
     implementation("org.springframework.kafka:spring-kafka")
     implementation("org.apache.kafka:kafka-clients")
 
-//    implementation("ch.qos.logback:logback-classic:1.7.0")
+    //implementation("ch.qos.logback:logback-classic:1.7.0")
 }
 
 tasks.withType<KotlinCompile> {
