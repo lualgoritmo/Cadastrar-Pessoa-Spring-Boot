@@ -40,7 +40,7 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 
     implementation("javax.servlet:javax.servlet-api:4.0.1")
-    implementation("io.github.classgraph:classgraph:4.8.160")
+    //implementation("io.github.classgraph:classgraph:4.8.160")
 
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-logging")
