@@ -4,7 +4,7 @@ import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.*
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.AuthorNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.service.AuthorService
-import com.luciano.cadastropessoa.cadastrarpessoa.service.impl.KafkaMessageProducerImpl
+import com.luciano.cadastropessoa.cadastrarpessoa.service.kafka.KafkaMessageProducerImpl
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/authors")
 class AuthorController(
     private val authorService: AuthorService,
-    private val kafkaMessageProducerImpl: KafkaMessageProducerImpl) {
+    private val kafkaMessageProducerImpl: KafkaMessageProducerImpl
+) {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createAuthor(@RequestBody @Valid requestAuthorDTO: RequestAuthorDTO): RequestAuthorDTO {
         val author: Author = authorService.createAuthor(requestAuthorDTO.toEntity())
         val topic = "primeiro-topico"
         val message = "O author foi criado"
-        kafkaMessageProducerImpl.sendMessage(topic = topic, message = message)
+        kafkaMessageProducerImpl.sendMessage(topic = topic, key = "test-author", message = message)
         return RequestAuthorDTO.fromEntity(author)
 
     }

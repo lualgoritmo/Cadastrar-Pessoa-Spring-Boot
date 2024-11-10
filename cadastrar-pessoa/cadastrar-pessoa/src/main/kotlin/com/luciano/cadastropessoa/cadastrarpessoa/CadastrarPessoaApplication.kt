@@ -11,5 +11,4 @@ import org.springframework.kafka.annotation.EnableKafka
 class CadastrarPessoaApplication
 fun main(args: Array<String>) {
 	runApplication<CadastrarPessoaApplication>(*args)
-	println("Hello, Word!")
 }

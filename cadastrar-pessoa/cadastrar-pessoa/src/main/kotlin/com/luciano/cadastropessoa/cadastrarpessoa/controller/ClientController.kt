@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/clientîes")
+@RequestMapping("/v1/clientîes/")
 class ClientController(private val clientService: ClientService) {
 
     @PostMapping
