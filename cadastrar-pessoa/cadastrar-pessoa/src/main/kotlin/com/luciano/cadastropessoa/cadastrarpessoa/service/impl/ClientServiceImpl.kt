@@ -26,13 +26,13 @@ class ClientServiceImpl(
         val message = "Cliente: criado com sucessos ${savedClient.name}, pronto para " +
                 "cadastrar o endereço"
 
-        val kafka = kafkaMessageProducerImpl.sendMessage(
+        kafkaMessageProducerImpl.sendMessage(
             topic = topic,
             key = savedClient.idClient.toString(),
-            message =message )
+            message = message )
 
         return savedClient.apply {
-            println("Esse aqui é do clientservice: $message, $kafka")
+            println("Esse aqui é do clientservice: $message")
         }
     }
     @Transactional
