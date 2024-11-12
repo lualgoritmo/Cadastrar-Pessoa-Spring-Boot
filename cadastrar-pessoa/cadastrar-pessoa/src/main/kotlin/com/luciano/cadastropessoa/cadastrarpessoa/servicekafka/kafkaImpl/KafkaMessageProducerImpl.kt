@@ -1,5 +1,6 @@
-package com.luciano.cadastropessoa.cadastrarpessoa.service.kafka
+package com.luciano.cadastropessoa.cadastrarpessoa.servicekafka.kafkaImpl
 
+import com.luciano.cadastropessoa.cadastrarpessoa.servicekafka.producer.KafkaMessageProducer
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.support.SendResult
 import org.springframework.stereotype.Service
@@ -12,9 +13,9 @@ import java.util.concurrent.CompletableFuture
 //    }
 //}
 @Service
-class KafkaMessageProducerImpl(private val kafkaTemplate: KafkaTemplate<String, String>) {
+class KafkaMessageProducerImpl(private val kafkaTemplate: KafkaTemplate<String, String>): KafkaMessageProducer {
 
-    fun sendMessage(topic: String, key: String, message: String): String {
+    override fun sendMessage(topic: String, key: String, message: String): String {
         val future: CompletableFuture<SendResult<String, String>> = kafkaTemplate.send(topic, key, message)
 
         future.thenAccept { result ->

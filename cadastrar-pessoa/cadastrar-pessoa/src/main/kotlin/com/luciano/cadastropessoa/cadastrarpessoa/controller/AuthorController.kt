@@ -4,7 +4,7 @@ import com.luciano.cadastropessoa.cadastrarpessoa.controller.dto.*
 import com.luciano.cadastropessoa.cadastrarpessoa.exception.AuthorNotFoundException
 import com.luciano.cadastropessoa.cadastrarpessoa.model.Author
 import com.luciano.cadastropessoa.cadastrarpessoa.service.AuthorService
-import com.luciano.cadastropessoa.cadastrarpessoa.service.kafka.KafkaMessageProducerImpl
+import com.luciano.cadastropessoa.cadastrarpessoa.servicekafka.kafkaImpl.KafkaMessageProducerImpl
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*

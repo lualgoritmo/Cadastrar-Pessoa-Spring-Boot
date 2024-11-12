@@ -7,7 +7,7 @@ import com.luciano.cadastropessoa.cadastrarpessoa.exception.ClientNotFoundExcept
 import com.luciano.cadastropessoa.cadastrarpessoa.model.ClientUser
 import com.luciano.cadastropessoa.cadastrarpessoa.repository.ClientRepository
 import com.luciano.cadastropessoa.cadastrarpessoa.service.ClientService
-import com.luciano.cadastropessoa.cadastrarpessoa.service.kafka.KafkaMessageProducerImpl
+import com.luciano.cadastropessoa.cadastrarpessoa.servicekafka.kafkaImpl.KafkaMessageProducerImpl
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import kotlin.jvm.optionals.getOrElse
