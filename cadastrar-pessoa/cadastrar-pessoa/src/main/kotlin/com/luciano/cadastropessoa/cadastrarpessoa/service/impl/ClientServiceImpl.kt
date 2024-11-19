@@ -31,7 +31,7 @@ class ClientServiceImpl(
             key = savedClient.idClient.toString(),
             message = message )
 
-        return savedClient.apply {
+        return savedClient.also {
             println("Esse aqui é do clientservice: $message")
         }
     }
